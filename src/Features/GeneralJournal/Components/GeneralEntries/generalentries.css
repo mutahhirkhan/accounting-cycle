@@ -1,0 +1,33 @@
+.general-entry-container{
+  margin-top: 10px;
+  border: 1px solid black;
+  width: 100%;
+  padding: 1rem;
+  margin:  0 auto;
+ 
+}
+
+#fixedheadings
+{
+  font-weight: 100px;
+  font-size: 40px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: white !important;
+}
+
+.general-entry-container h3{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: 10px;
+  font-size: 25px;
+  color: black;
+}
+
+.entry{
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 200px 200px 200px 200px 200px 200px ;
+  text-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  background: linear-gradient(to left, #6666ff 0%, #6699ff 100%);
+}
