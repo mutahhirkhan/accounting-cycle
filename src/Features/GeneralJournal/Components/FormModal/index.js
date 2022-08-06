@@ -84,20 +84,20 @@ function FormModal() {
 
   const inputFunction = (inputArr, Info, Name, Type, fn) => {
     return inputArr.map((arr, i) => (
-      <div className="form">
+      <div key={i+1} className="form">
         <div>
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1"> {Info}: </span>
-            <input type="text" class="form-control" placeholder="Account Name" aria-label="Username" aria-describedby="basic-addon1" id={Info}
+          <div className="input-group mb-3">
+            <span className="input-group-text" id="basic-addon1"> {Info}: </span>
+            <input type="text" className="form-control" placeholder="Account Name" aria-label="Username" aria-describedby="basic-addon1" id={Info}
               onChange={e => fn(e, i)}
               value={Info === 'Debit Info' ? arr.debitInfo : arr.creditInfo}
               name={Info === 'Debit Info' ? 'debitInfo' : 'creditInfo'} />
           </div>
         </div>
         <div>
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1"> {Name} Amount : </span>
-            <input type="number" class="form-control" placeholder="Amount" aria-label="Username" aria-describedby="basic-addon1"
+          <div className="input-group mb-3">
+            <span className="input-group-text" id="basic-addon1"> {Name} Amount : </span>
+            <input type="number" className="form-control" placeholder="Amount" aria-label="Username" aria-describedby="basic-addon1"
               id={Name}
               onChange={e => fn(e, i)}
               value={Info === 'Debit Info' ? arr.debit : arr.credit}
@@ -105,10 +105,10 @@ function FormModal() {
           </div>
         </div>
         <div>
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1"> {Type} </span>
+          <div className="input-group mb-3">
+            <span className="input-group-text" id="basic-addon1"> {Type} </span>
             <select
-              class="form-control"
+              className="form-control"
               id="TypeA"
               onChange={e => fn(e, i)}
               value={Info === 'Debit Info' ? arr.typeA : arr.typeB}

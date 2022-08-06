@@ -6,13 +6,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Header = () => {
   return (
-      <><nav class="navbar">
+      <><nav className="navbar">
               <ul>
-                    <li><a><i class="fa fa-fw fa-home"></i> <NavLink to="/" className="">Home</NavLink></a></li>
+                    <li><i className="fa fa-fw fa-home"></i> <NavLink to="/" className="">Home</NavLink></li>
                     <li> <NavLink to="/financial-statement" className="">Financial Statements</NavLink></li>
                     <li> </li>
                     <li><NavLink to="/ClosingAccounts" className="">Closing Accounts</NavLink></li>
-                    <li><a href="#">Contact us</a></li>
+                    {/* <li><a href="#">Contact us</a></li> */}
                     
               </ul>
         </nav>
