@@ -1,102 +1,93 @@
-.income-statement{
-  display: flex;
-  flex-direction: column;
-  border: 1px solid black;
-  padding: 1rem;
+.income-statement {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid black;
+	padding: 1rem;
 }
-.rev-exp{
-    display: flex;
-    justify-content: space-around;
-    padding: 1rem;
-    width: 50%;
-    margin: 0 auto;
-    background: linear-gradient(to top right, #6666ff 0%, #66ccff 100%);
-    font-size: 25px;
-    font-weight: 600;
-    font-family:'Times New Roman', Times, serif;
+.rev-exp {
+	display: flex;
+	justify-content: space-around;
+	padding: 1rem;
+	width: 50%;
+	margin: 0 auto;
+	background: var(--dark-grayy);
+	font-size: 25px;
+	/* font-weight: 600; */
+    color: white;
+	font-family: "Times New Roman", Times, serif;
 }
-.net-inc{
-    border: 1px solid black;
-    width: 30%;
-    display: flex;
-    justify-content: space-around;
-    padding: 1rem;
-    margin: 0 auto;
-    font-size: 25px;
-    background: linear-gradient(to bottom right, #6666ff 0%, #66ccff 100%);
-    font-weight: 600;
-    font-family:'Times New Roman', Times, serif;
+.net-inc {
+	border: 1px solid black;
+	width: 30%;
+	display: flex;
+	justify-content: space-around;
+	padding: 1rem;
+	margin: 0 auto;
+	font-size: 25px;
+	background: linear-gradient(to bottom right, #6666ff 0%, #66ccff 100%);
+	font-weight: 600;
+	font-family: "Times New Roman", Times, serif;
 }
-.owner-equity-statement{
-    display: flex;
-    flex-direction: column;
-    padding: 1rem;
-}
-
-.OE-entries{
-    display: flex;
-    flex-direction: column;
-    font-size: 25px;
-    background: linear-gradient(to bottom right, #6666ff 0%, #66ccff 100%);
-    
-    font-family:'Times New Roman', Times, serif;
-}
-.OE-entries h4{
-    font-weight: 50px !important;
-}
-.OE-entries:last-child{
-    border: 1px solid black;
-    
-}
-.balance-sheet{
-    display: grid;
-    grid-template-rows: auto;
-    grid-template-columns: auto auto;
-
-}
-.balance-sheet2{
-    display: grid;
-    width: 100%;
-    grid-template-rows: auto;
-    grid-template-columns: auto auto;
-
-}
-.balance-sheet div{
-    border: 1px solid black;
-    font-family: 'Times New Roman', Times, serif;
+.owner-equity-statement {
+	display: flex;
+	flex-direction: column;
+	padding: 1rem;
 }
 
-.asset-col h2{
-    background: linear-gradient(to right, #6666ff 0%, #66ccff 100%);
-    padding: 1rem;
+.OE-entries {
+	display: flex;
+	flex-direction: column;
+	font-size: 25px;
+	background: linear-gradient(to bottom right, #6666ff 0%, #66ccff 100%);
+
+	font-family: "Times New Roman", Times, serif;
 }
-.liab-oe-col h2
-{
-    background: linear-gradient(to left, #6666ff 0%, #66ccff 100%);
-    padding: 1rem;
+.OE-entries h4 {
+	font-weight: 50px !important;
 }
-h1
-{
-    font-family: Georgia, 'Times New Roman', Times, serif;
+.OE-entries:last-child {
+	border: 1px solid black;
+}
+.balance-sheet {
+	display: grid;
+	grid-template-rows: auto;
+	grid-template-columns: auto auto;
+}
+.balance-sheet2 {
+	display: grid;
+	width: 100%;
+	grid-template-rows: auto;
+	grid-template-columns: auto auto;
+}
+.balance-sheet div {
+	border: 1px solid black;
+	font-family: "Times New Roman", Times, serif;
 }
 
-.asset-col h3 , .liab-oe-col h3{
-    border: 1px solid black;
+.asset-col h2 {
+	background: linear-gradient(to right, #6666ff 0%, #66ccff 100%);
+	padding: 1rem;
 }
-.balance
-{
-    font-family: 'Times New Roman', Times, serif;
-    color: black;
-    
-    background: linear-gradient(to left, #6666ff 0%, #66ccff 100%);
-    
+.liab-oe-col h2 {
+	background: linear-gradient(to left, #6666ff 0%, #66ccff 100%);
+	padding: 1rem;
+}
+h1 {
+	font-family: Georgia, "Times New Roman", Times, serif;
+}
 
+.asset-col h3,
+.liab-oe-col h3 {
+	border: 1px solid black;
 }
-.balancediv
-{
-    
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
+.balance {
+	font-family: "Times New Roman", Times, serif;
+	color: black;
+
+	background: linear-gradient(to left, #6666ff 0%, #66ccff 100%);
+}
+.balancediv {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }

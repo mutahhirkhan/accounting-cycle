@@ -13,6 +13,7 @@ function FinancialStatementMainComponent() {
  
 
     const {documents,error}=useCollection('generalEntry');
+   //  console.log("firebase documents",documents)
     const {dispatch,rev,exp,netInc}=useAuthContext();
 
     
@@ -69,7 +70,7 @@ function FinancialStatementMainComponent() {
      
 
 
-      //console.log(assetsTotal,liabTotal);
+      console.log(assetsTotal,liabTotal);
        return{
          
         revTotal,

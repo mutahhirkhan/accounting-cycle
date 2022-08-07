@@ -42,20 +42,20 @@ function FormModal() {
   const creditInfoChangeHandler = (e, i) => {
     const { name, value } = e.target;
     const list = [...creditVal];
+    // console.log(list[i][name])
     list[i][name] = value;
+    // console.log(list);
     setCreditVal(list);
   };
 
   const removeClickHandler = (val, index) => {
     if (val === 'd') {
-      const list = [...debitVal];
-      list.splice(index, 1);
-      setDebitVal(list);
+      let newDebtInputs = debitVal.filter((el, i) => i !== index )
+      setDebitVal(newDebtInputs);
     }
     else {
-      const list = [...creditVal];
-      list.splice(index, 1);
-      setCreditVal(list);
+      let newCreditInputs = debitVal.filter((el, i) => i !== index )
+      setCreditVal(newCreditInputs);
     }
   };
 
@@ -119,9 +119,9 @@ function FormModal() {
         {creditVal.map( (creditValValInput, index) => (
           <FormInput 
             inputFields ={creditValValInput} 
-            Info={"'Debit Info'"} 
-            Name={"Debit"} 
-            Type={"Type A"} 
+            Info={"'Credit Info'"} 
+            Name={"Credit"} 
+            Type={"Type B"} 
             onChange={creditInfoChangeHandler}
             index={index}
             removeClickHandler={removeClickHandler}
@@ -182,8 +182,8 @@ function FormModal() {
       {debitVal.map( (debtValInput, index) => (
           <FormInput 
             inputFields ={debtValInput} 
-            Info={"'Debit Info'"} 
-            Name={"Debit"} 
+            Info={"'Credit Info'"} 
+            Name={"Credit"} 
             Type={"Type A"} 
             onChange={debitInfoChangeHandler}
             index={index}
@@ -193,9 +193,9 @@ function FormModal() {
         {creditVal.map( (creditValValInput, index) => (
           <FormInput 
             inputFields ={creditValValInput} 
-            Info={"'Debit Info'"} 
-            Name={"Debit"} 
-            Type={"Type A"} 
+            Info={"'Credit Info'"} 
+            Name={"Credit"} 
+            Type={"Type B"} 
             onChange={creditInfoChangeHandler}
             index={index}
             removeClickHandler={removeClickHandler}

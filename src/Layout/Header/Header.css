@@ -5,13 +5,20 @@ ul {
 
 }
 
+/* create css variables */
+:root {
+  --orange: #f19066;
+  --dark-grayy: #303952;
+  --off-white: #888888;
+  --white: #fff;
+}
 
 .navbar{
-  background: linear-gradient(to right, #6666ff 0%, #0000ff 100%);
-  border-radius: 10px;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  
+  background: var(--dark-grayy);
+  /* border-radius: 10px; */
+  /* background-repeat: no-repeat; */
+  /* background-size: 100% 100%; */
+  /* display: block !important; */
 }
 .navbar ul{
   overflow: auto;
@@ -19,35 +26,41 @@ ul {
 .navbar li{
   float:left;
   list-style: none; 
-  margin: 13px 20px;
+  margin: 0 20px 0 0;
   
 }
 .navbar li a{
-  padding: 3px 3px;
+  /* padding: 3px 3px; */
   text-decoration: none;
-  color: white;
+  color: var(--off-white);
   font-size: x-large;
   font-family: Georgia, 'Times New Roman', Times, serif;
+  transition: all 300ms ease-in-out;
 }
 .navbar li a:hover{
- 
-  background: white;
-  
-  color: black;
-  font-weight: 500;
-  border-radius: 16px;
-  margin-right: 5px;
-
-
+  /* background: white; */
+  color: var(--white);
+  /* border-radius: 6px; */
+  /* padding: 0 4px; */
 }
+
 .search{
   float: right;
   color: white;
   padding: 12px 75px;
 }
+
 .navbar input{
   border: 2px solid black;
   border-radius: 14px;
   padding: 3px 17px;
   width: 129px;
+}
+
+.active {
+  color: white !important;
+}
+
+.inactive {
+  color: var(--off-white) !important;
 }

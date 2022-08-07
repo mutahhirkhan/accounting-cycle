@@ -7,7 +7,7 @@ const FormInput = ({ inputFields, Info, Name, Type, onChange, index, removeClick
           <div className="input-group mb-3">
             <span className="input-group-text" id="basic-addon1"> {Info}: </span>
             <input type="text" className="form-control" placeholder="Account Name" aria-label="Username" aria-describedby="basic-addon1" id={Info}
-              onChange={(e, i) => onChange(e, i)}
+              onChange={e => onChange(e, index)}
               value={Info === 'Debit Info' ? inputFields.debitInfo : inputFields.creditInfo}
               name={Info === 'Debit Info' ? 'debitInfo' : 'creditInfo'} />
           </div>
@@ -17,7 +17,7 @@ const FormInput = ({ inputFields, Info, Name, Type, onChange, index, removeClick
             <span className="input-group-text" id="basic-addon1"> {Name} Amount : </span>
             <input type="number" className="form-control" placeholder="Amount" aria-label="Username" aria-describedby="basic-addon1"
               id={Name}
-              onChange={(e, i) => onChange(e, i)}
+              onChange={e => onChange(e, index)}
               value={Info === 'Debit Info' ? inputFields.debit : inputFields.credit}
               name={Name === 'Debit' ? 'debit' : 'credit'} />
           </div>
@@ -28,7 +28,7 @@ const FormInput = ({ inputFields, Info, Name, Type, onChange, index, removeClick
             <select
               className="form-control"
               id="TypeA"
-              onChange={(e, i) => onChange(e, i)}
+              onChange={e => onChange(e, index)}
               value={Info === 'Debit Info' ? inputFields.typeA : inputFields.typeB}
               name={Type === 'Type A' ? 'typeA' : 'typeB'}
             >
@@ -44,7 +44,7 @@ const FormInput = ({ inputFields, Info, Name, Type, onChange, index, removeClick
         </div>
         <div>
           <button disabled={index===0} className="btn btn-primary"
-            onClick={(e) => { Name === 'Debit' ? removeClickHandler('d', index) : removeClickHandler('c', index) }}
+            onClick={(e) => { e.preventDefault();  Name === 'Debit' ? removeClickHandler('d', index) : removeClickHandler('c', index) }}
           >
             -
           </button>
