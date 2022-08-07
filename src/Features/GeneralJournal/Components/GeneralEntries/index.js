@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
-import LoadingSpinner from '../../../../components/UI/LoadingSpinner';
+import LoadingSpinner from '../../../../Components/UI/LoadingSpinner';
 import {useCollection} from '../../../../hooks/useCollection'
 import './generalentries.css';
 import moment from 'moment';
