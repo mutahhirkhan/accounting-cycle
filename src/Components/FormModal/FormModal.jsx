@@ -1,38 +1,52 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState,useId } from 'react'
-import { useAuthContext } from './../../hooks/useAuthContext';
-import { useFirestore } from './../../hooks/useFirestore';
-import './FormModal.css'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import FormInput from '../FormInput/FormInput';
+import React, { useState, useId } from "react";
+import { useAuthContext } from "./../../hooks/useAuthContext";
+import { useFirestore } from "./../../hooks/useFirestore";
+// import "./FormModal.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import FormInput from "../FormInput/FormInput";
+import { Card, CardContent, makeStyles } from "@material-ui/core";
 
-
+const useStyles = makeStyles(() => ({
+  root: {
+    margin: "10px 10px",
+    background: "#fafafa",
+    border: "2px black solid",
+  },
+  inner: {
+    display: "grid",
+    gridTemplateColumns: "40fr 30fr 30fr",
+  },
+  flex: {
+    display: "flex",
+    justifyContent: "flexStart",
+  },
+}));
 
 function FormModal() {
-   
+  const classes = useStyles();
   const { dispatch, generalEntry } = useAuthContext();
-  const { addDocument, response } = useFirestore("generalEntry")
-  const { addDocument :doc, response : resp } = useFirestore("generalEntry")
+  const { addDocument, response } = useFirestore("generalEntry");
+  const { addDocument: doc, response: resp } = useFirestore("generalEntry");
 
   const [debitVal, setDebitVal] = useState([
     {
-      debitInfo: '',
-      debit: '',
-      typeA: '',
+      debitInfo: "",
+      debit: "",
+      typeA: "",
     },
   ]);
 
   const [creditVal, setCreditVal] = useState([
     {
-      creditInfo: '',
-      credit: '',
-      typeB: '',
+      creditInfo: "",
+      credit: "",
+      typeB: "",
     },
   ]);
-  const [error,setError]=useState('');
+  const [error, setError] = useState("");
 
   const debitInfoChangeHandler = (e, i) => {
-    
     const { name, value } = e.target;
     const list = [...debitVal];
     list[i][name] = value;
@@ -49,204 +63,211 @@ function FormModal() {
   };
 
   const removeClickHandler = (val, index) => {
-    if (val === 'd') {
-      let newDebtInputs = debitVal.filter((el, i) => i !== index )
+    if (val === "d") {
+      let newDebtInputs = debitVal.filter((el, i) => i !== index);
       setDebitVal(newDebtInputs);
-    }
-    else {
-      let newCreditInputs = debitVal.filter((el, i) => i !== index )
+    } else {
+      let newCreditInputs = debitVal.filter((el, i) => i !== index);
       setCreditVal(newCreditInputs);
     }
   };
 
-  const addClickHandler = val => {
-    if (val === 'd') {
+  const addClickHandler = (val) => {
+    if (val === "d") {
       setDebitVal([
         ...debitVal,
         {
-          debitInfo: '',
-          debit: '',
-          typeA: '',
+          debitInfo: "",
+          debit: "",
+          typeA: "",
         },
       ]);
     } else {
       setCreditVal([
         ...creditVal,
         {
-          creditInfo: '',
-          credit: '',
-          typeB: '',
+          creditInfo: "",
+          credit: "",
+          typeB: "",
         },
       ]);
     }
   };
 
   const postGeneralEntryHandler = async () => {
- 
-    const debitValue=debitVal.reduce((acc,{debit})=>acc+ +debit,0);
-    const creditValue=creditVal.reduce((acc,{credit})=>acc+ +credit,0);
-    const id =Math.floor(Math.random() * 100);
+    const debitValue = debitVal.reduce((acc, { debit }) => acc + +debit, 0);
+    const creditValue = creditVal.reduce((acc, { credit }) => acc + +credit, 0);
+    const id = Math.floor(Math.random() * 100);
 
-
-    if(debitValue===creditValue){
-    const entriesToPost = [...debitVal.map(debitEntry => debitEntry), ...creditVal.map(creditEntry => creditEntry)];
-    console.log(entriesToPost);
-    dispatch({type: 'General_Entry', payload: entriesToPost});
-    await addDocument(entriesToPost);
-    }else{
-      setError('Debit and Credit value should be equal');
+    if (debitValue === creditValue) {
+      const entriesToPost = [
+        ...debitVal.map((debitEntry) => debitEntry),
+        ...creditVal.map((creditEntry) => creditEntry),
+      ];
+      console.log(entriesToPost);
+      dispatch({ type: "General_Entry", payload: entriesToPost });
+      await addDocument(entriesToPost);
+    } else {
+      setError("Debit and Credit value should be equal");
     }
-  }
+  };
 
   return (
-    <div className='form-container' >
-      <h2> General-Journal Entries </h2>
-      
-      <form className="overallform">
-        {/* {debitInput} */}
-        {/* {creditInput} */}
-        {debitVal.map( (debtValInput, index) => (
-          <FormInput 
-            inputFields ={debtValInput} 
-            Info={"'Debit Info'"} 
-            Name={"Debit"} 
-            Type={"Type A"} 
-            onChange={debitInfoChangeHandler}
-            index={index}
-            removeClickHandler={removeClickHandler}
-            />
-        ))}
-        {creditVal.map( (creditValValInput, index) => (
-          <FormInput 
-            inputFields ={creditValValInput} 
-            Info={"'Credit Info'"} 
-            Name={"Credit"} 
-            Type={"Type B"} 
-            onChange={creditInfoChangeHandler}
-            index={index}
-            removeClickHandler={removeClickHandler}
-            />
-        ))}
-      </form>
-      <br />
-      <div className='submit-error'>
-        
-          <div className='entry'>
-            <div className='center' >
-              <label>Add Debit Entry </label>
+    <div>
+      <Card className={classes.root}>
+        <CardContent>
+          <h2> General-Journal Entries</h2>
+          <form style={{ overflowX: "hidden", overflowY: "auto" }}>
+            {debitVal.map((debtValInput, index) => (
+              <FormInput
+                inputFields={debtValInput}
+                Info={"'Debit Info'"}
+                Name={"Debit"}
+                Type={"Type A"}
+                onChange={debitInfoChangeHandler}
+                index={index}
+                removeClickHandler={removeClickHandler}
+              />
+            ))}
+            {creditVal.map((creditValValInput, index) => (
+              <FormInput
+                inputFields={creditValValInput}
+                Info={"'Credit Info'"}
+                Name={"Credit"}
+                Type={"Type B"}
+                onChange={creditInfoChangeHandler}
+                index={index}
+                removeClickHandler={removeClickHandler}
+              />
+            ))}
+          </form>
+          <div className={classes.inner}>
+            <div
+              className="entry"
+              style={{ display: "flex", justifyContent: "flex-start" }}
+            >
+              <label>Add Debit Entry</label>
+              <div>
+                <button
+                  className={` btn btn-primary`}
+                  onClick={() => addClickHandler("c")}
+                >
+                  +
+                </button>
+              </div>
             </div>
-            <div className='center'>
+            <div
+              className="entry"
+              style={{ display: "flex", justifyContent: "flex-start" }}
+            >
+              <label>Add Credit Entry</label>
+              <div>
+                <button
+                  className={` btn btn-primary`}
+                  onClick={() => addClickHandler("c")}
+                >
+                  +
+                </button>
+              </div>
+            </div>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <p className="alert alert-warning" hidden={!error}>
+                {error}
+              </p>
               <button
+                type="submit"
                 className={`btn btn-primary `}
-                onClick={() => addClickHandler('d')}
+                onClick={postGeneralEntryHandler}
               >
-                +
-            </button>
+                Submit
+              </button>
             </div>
           </div>
-        
-        
-          <div  className='entry'>
-            <div >
-              <label>Add Credit Entry </label>
+        </CardContent>
+      </Card>
+      <Card className={classes.root}>
+        <CardContent>
+          <h2> Adjusting Entries </h2>
+          <form className={classes.scroll}>
+            {debitVal.map((debtValInput, index) => (
+              <FormInput
+                inputFields={debtValInput}
+                Info={"'Credit Info'"}
+                Name={"Credit"}
+                Type={"Type A"}
+                onChange={debitInfoChangeHandler}
+                index={index}
+                removeClickHandler={removeClickHandler}
+              />
+            ))}
+            {creditVal.map((creditValValInput, index) => (
+              <FormInput
+                inputFields={creditValValInput}
+                Info={"'Credit Info'"}
+                Name={"Credit"}
+                Type={"Type B"}
+                onChange={creditInfoChangeHandler}
+                index={index}
+                removeClickHandler={removeClickHandler}
+              />
+            ))}
+          </form>
+          <div className={classes.inner}>
+            <div
+              className="entry"
+              style={{ display: "flex", justifyContent: "flex-start" }}
+            >
+              <div className="center">
+                <label>Add Debit Entry </label>
+              </div>
+              <div className="center">
+                <button
+                  className={`btn btn-primary `}
+                  onClick={() => addClickHandler("d")}
+                >
+                  +
+                </button>
+              </div>
             </div>
-            <div>
-              <button
-                className={` btn btn-primary`}
-                onClick={() => addClickHandler('c')}
-              >
-                +
-            </button>
-            
-          </div>
-        </div>
-        <div className='submit-section'>
-        
-          <div >
-           
-              <p className="alert alert-warning" hidden={!error}>{error}</p>
-            <button type="submit" className={`btn btn-primary `} onClick={postGeneralEntryHandler}>
-              Submit
-            </button>
-          </div>
-        </div>
-      </div>
-      <hr/>
-      
-      <br/>
-      
-      <h2> Adjusting  Entries </h2>
-        <form className="overallform">
-      {/* {debitInput}
-      {creditInput} */}
-      {debitVal.map( (debtValInput, index) => (
-          <FormInput 
-            inputFields ={debtValInput} 
-            Info={"'Credit Info'"} 
-            Name={"Credit"} 
-            Type={"Type A"} 
-            onChange={debitInfoChangeHandler}
-            index={index}
-            removeClickHandler={removeClickHandler}
-            />
-        ))}
-        {creditVal.map( (creditValValInput, index) => (
-          <FormInput 
-            inputFields ={creditValValInput} 
-            Info={"'Credit Info'"} 
-            Name={"Credit"} 
-            Type={"Type B"} 
-            onChange={creditInfoChangeHandler}
-            index={index}
-            removeClickHandler={removeClickHandler}
-            />
-        ))}
-    </form>
-    <div className='submit-error'>
-        
-          <div className='entry'>
-            <div className='center' >
-              <label>Add Debit Entry </label>
+
+            <div
+              className="entry"
+              style={{ display: "flex", justifyContent: "flex-start" }}
+            >
+              <div>
+                <label>Add Credit Entry </label>
+              </div>
+              <div>
+                <button
+                  className={` btn btn-primary`}
+                  onClick={() => addClickHandler("c")}
+                >
+                  +
+                </button>
+              </div>
             </div>
-            <div className='center'>
-              <button
-                className={`btn btn-primary `}
-                onClick={() => addClickHandler('d')}
-              >
-                +
-            </button>
+            <div
+              className="submit-section"
+              style={{ display: "flex", justifyContent: "center" }}
+            >
+              <div>
+                <p className="alert alert-warning" hidden={!error}>
+                  {error}
+                </p>
+                <button
+                  type="submit"
+                  className={`btn btn-primary `}
+                  onClick={postGeneralEntryHandler}
+                >
+                  Submit
+                </button>
+              </div>
             </div>
           </div>
-        
-        
-          <div  className='entry'>
-            <div >
-              <label>Add Credit Entry </label>
-            </div>
-            <div>
-              <button
-                className={` btn btn-primary`}
-                onClick={() => addClickHandler('c')}
-              >
-                +
-            </button>
-            
-          </div>
-        </div>
-        <div className='submit-section'>
-        
-          <div >
-           
-              <p className="alert alert-warning" hidden={!error}>{error}</p>
-            <button type="submit" className={`btn btn-primary `} onClick={postGeneralEntryHandler}>
-              Submit
-            </button>
-          </div>
-        </div>
-      </div>
+        </CardContent>
+      </Card>
     </div>
-    
-  )
+  );
 }
 
-export default FormModal
+export default FormModal;
