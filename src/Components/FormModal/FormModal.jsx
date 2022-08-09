@@ -21,6 +21,10 @@ const useStyles = makeStyles(() => ({
     display: "flex",
     justifyContent: "flexStart",
   },
+  scroll: {
+    overflowY: "scroll",
+    height: "150px",
+  },
 }));
 
 function FormModal() {
@@ -117,30 +121,32 @@ function FormModal() {
       <Card className={classes.root}>
         <CardContent>
           <h2> General-Journal Entries</h2>
-          <form style={{ overflowX: "hidden", overflowY: "auto" }}>
-            {debitVal.map((debtValInput, index) => (
-              <FormInput
-                inputFields={debtValInput}
-                Info={"'Debit Info'"}
-                Name={"Debit"}
-                Type={"Type A"}
-                onChange={debitInfoChangeHandler}
-                index={index}
-                removeClickHandler={removeClickHandler}
-              />
-            ))}
-            {creditVal.map((creditValValInput, index) => (
-              <FormInput
-                inputFields={creditValValInput}
-                Info={"'Credit Info'"}
-                Name={"Credit"}
-                Type={"Type B"}
-                onChange={creditInfoChangeHandler}
-                index={index}
-                removeClickHandler={removeClickHandler}
-              />
-            ))}
-          </form>
+          <div className={classes.scroll}>
+            <form>
+              {debitVal.map((debtValInput, index) => (
+                <FormInput
+                  inputFields={debtValInput}
+                  Info={"'Debit Info'"}
+                  Name={"Debit"}
+                  Type={"Type A"}
+                  onChange={debitInfoChangeHandler}
+                  index={index}
+                  removeClickHandler={removeClickHandler}
+                />
+              ))}
+              {creditVal.map((creditValValInput, index) => (
+                <FormInput
+                  inputFields={creditValValInput}
+                  Info={"'Credit Info'"}
+                  Name={"Credit"}
+                  Type={"Type B"}
+                  onChange={creditInfoChangeHandler}
+                  index={index}
+                  removeClickHandler={removeClickHandler}
+                />
+              ))}
+            </form>
+          </div>
           <div className={classes.inner}>
             <div
               className="entry"
@@ -188,30 +194,32 @@ function FormModal() {
       <Card className={classes.root}>
         <CardContent>
           <h2> Adjusting Entries </h2>
-          <form className={classes.scroll}>
-            {debitVal.map((debtValInput, index) => (
-              <FormInput
-                inputFields={debtValInput}
-                Info={"'Credit Info'"}
-                Name={"Credit"}
-                Type={"Type A"}
-                onChange={debitInfoChangeHandler}
-                index={index}
-                removeClickHandler={removeClickHandler}
-              />
-            ))}
-            {creditVal.map((creditValValInput, index) => (
-              <FormInput
-                inputFields={creditValValInput}
-                Info={"'Credit Info'"}
-                Name={"Credit"}
-                Type={"Type B"}
-                onChange={creditInfoChangeHandler}
-                index={index}
-                removeClickHandler={removeClickHandler}
-              />
-            ))}
-          </form>
+          <div className={classes.scroll}>
+            <form>
+              {debitVal.map((debtValInput, index) => (
+                <FormInput
+                  inputFields={debtValInput}
+                  Info={"'Credit Info'"}
+                  Name={"Credit"}
+                  Type={"Type A"}
+                  onChange={debitInfoChangeHandler}
+                  index={index}
+                  removeClickHandler={removeClickHandler}
+                />
+              ))}
+              {creditVal.map((creditValValInput, index) => (
+                <FormInput
+                  inputFields={creditValValInput}
+                  Info={"'Credit Info'"}
+                  Name={"Credit"}
+                  Type={"Type B"}
+                  onChange={creditInfoChangeHandler}
+                  index={index}
+                  removeClickHandler={removeClickHandler}
+                />
+              ))}
+            </form>
+          </div>
           <div className={classes.inner}>
             <div
               className="entry"
