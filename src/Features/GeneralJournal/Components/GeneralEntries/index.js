@@ -12,6 +12,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
+
 function createData(name, calories, fat, carbs, protein) {
   return { name, calories, fat, carbs, protein };
 }
@@ -25,6 +26,7 @@ const rows = [
 function GeneralEntries() {
 
   const { documents, error } = useCollection("generalEntry");
+  console.log("general entries",documents)
   const renderGeneralEnrties = () => {
     return documents && documents.map((arr, index) => {
       const { typeA, debitInfo, debit, } = arr[0];
