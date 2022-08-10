@@ -61,21 +61,21 @@ function FormModal() {
   const addClickHandler = val => {
     if (val === 'd') {
       setDebitVal([
-        ...debitVal,
         {
           debitInfo: '',
           debit: '',
           typeA: '',
         },
+        ...debitVal,
       ]);
     } else {
       setCreditVal([
-        ...creditVal,
         {
           creditInfo: '',
           credit: '',
           typeB: '',
         },
+        ...creditVal,
       ]);
     }
   };

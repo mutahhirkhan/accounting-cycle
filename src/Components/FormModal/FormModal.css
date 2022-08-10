@@ -9,6 +9,9 @@
   {
     font-weight: bold;
   }
+  .credit-debit-btn{
+    background-color: var(--orange) !important;
+  }
   .form-container h2{
     font-family:Georgia, 'Times New Roman', Times, serif ;
   }

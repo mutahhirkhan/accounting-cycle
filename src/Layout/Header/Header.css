@@ -6,12 +6,7 @@ ul {
 }
 
 /* create css variables */
-:root {
-  --orange: #f19066;
-  --dark-grayy: #303952;
-  --off-white: #888888;
-  --white: #fff;
-}
+
 
 .navbar{
   background: var(--dark-grayy);
