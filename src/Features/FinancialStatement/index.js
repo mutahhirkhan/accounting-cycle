@@ -119,82 +119,31 @@ function FinancialStatementMainComponent() {
 			</div>
 		);
 	};
+	// const allTypesData2 = () => {
+	// 	documents &&
+	// 		documents.map((arr, index) => {
+	// 			const { typeA, debit, debitInfo } = arr[0]; //type and amount
+	// 			const { typeB, credit, creditInfo } = arr[1];
 
-	const balanceSheetStatement = () => {
-		const { netTotal, assetsTotal, liabTotal, endingOwnerEquity, ownerWithDraw, ownerEquity, revTotal, expTotal } = allTypesData();
+	// 			return debitInfo, debit, creditInfo, credit;
+	// 		});
+	// 	//console.log(assetsTotal,liabTotal);
+	// };
+	// const all3 = () => {
+	// 	const { debitInfo, debit, creditInfo, credit } = allTypesData2();
 
-		let flag = 0;
-		if (assetsTotal == liabTotal + endingOwnerEquity + ownerEquity) {
-			//if balance is equal
-			flag = 1;
-		}
-		const newownerequity = Beginnigbalance + netTotal - ownerWithDraw;
-		const oc = newownerequity - Beginnigbalance + Beginnigbalance;
-
-		return (
-			<>
-				<h1>Balance Sheet statement</h1>
-				<div className="balance-sheet">
-					<div className="asset-col">
-						<h2>Assets</h2>
-						<h3>Total = {assetsTotal}</h3>
-					</div>
-					<div className="liab-oe-col">
-						<h2>Liability and Owner Equity</h2>
-						<h3>Liability = {liabTotal}</h3>
-						<h3>Owner Equity: {ownerEquity}</h3>
-						<h3>Ending Balance of OC = {oc}</h3>
-						<h3>Total = {liabTotal + oc}</h3>
-					</div>
-				</div>
-				<div className="balancediv">
-					{flag == 1 && <h1 className="balance">Balanced</h1>}
-					{flag == 0 && <h1 className="balance">UnBalanced</h1>}
-				</div>
-				<div className="balance-sheet2">
-					<div className="asset-col">
-						<h2>Trial Balance</h2>
-
-						<h3>Assets = {assetsTotal}</h3>
-						<h3>Liability = {liabTotal}</h3>
-						<h3>Owner Equity: {ownerEquity}</h3>
-						<h3>Owner withdraw: {ownerWithDraw}</h3>
-						<h3>Revenue: {revTotal}</h3>
-						<h3>Expense {expTotal}</h3>
-
-						<h3>Ending Balance of OC = {endingOwnerEquity}</h3>
-
-						<h3>Total = {liabTotal + endingOwnerEquity + ownerEquity}</h3>
-					</div>
-				</div>
-			</>
-		);
-	};
-	const allTypesData2 = () => {
-		documents &&
-			documents.map((arr, index) => {
-				const { typeA, debit, debitInfo } = arr[0]; //type and amount
-				const { typeB, credit, creditInfo } = arr[1];
-
-				return debitInfo, debit, creditInfo, credit;
-			});
-		//console.log(assetsTotal,liabTotal);
-	};
-	const all3 = () => {
-		const { debitInfo, debit, creditInfo, credit } = allTypesData2();
-
-		return (
-			<div>
-				<h1>{debitInfo}</h1>
-			</div>
-		);
-	};
+	// 	return (
+	// 		<div>
+	// 			<h1>{debitInfo}</h1>
+	// 		</div>
+	// 	);
+	// };
 
 	return (
 		<div className="financial-statements">
-			{generateIncomeStatement()}
+			{/* {generateIncomeStatement()} */}
 			{generateOwnetEquityStatement()}
-			{balanceSheetStatement()}
+			{/* {balanceSheetStatement()} */}
 			{closing()}
 		</div>
 	);
