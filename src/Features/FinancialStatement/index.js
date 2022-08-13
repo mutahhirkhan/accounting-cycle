@@ -14,14 +14,14 @@ function FinancialStatementMainComponent() {
 	const { dispatch, rev, exp, netInc } = useAuthContext();
 
 	const allTypesData = () => {
-		let revTotal = 0;
-		let expTotal = 0;
-		let netTotal = 0;
-		let ownerWithDraw = 0;
-		let assetsTotal = 0;
-		let liabTotal = 0;
-		let ownerEquity = 0;
-		let endingOwnerEquity = 0;
+		let revTotal = 0;			//is, tb
+		let expTotal = 0;			//is, tb
+		let netTotal = 0;			//is
+		let ownerWithDraw = 0;		//  , tb
+		let assetsTotal = 0;		//bs, tb
+		let liabTotal = 0;			//bs, tb
+		let ownerEquity = 0;		//bs, tb
+		let endingOwnerEquity = 0;	//bs, tb
 		
       // let counter = 0;
       // let flag = false;

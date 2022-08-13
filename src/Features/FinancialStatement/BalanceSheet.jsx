@@ -19,12 +19,15 @@ function BalanceSheet() {
   } = allTypesData(documents);
 
   let flag = 0;
+  // console.log(assetsTotal ,liabTotal , endingOwnerEquity , ownerEquity);
   if (assetsTotal == liabTotal + endingOwnerEquity + ownerEquity) {
     //if balance is equal
     flag = 1;
   }
   const newownerequity = Beginnigbalance + netTotal - ownerWithDraw;
-  const oc = newownerequity - Beginnigbalance + Beginnigbalance;
+  /// NOTICE 
+  // const oc = newownerequity - Beginnigbalance + Beginnigbalance;
+  const oc = newownerequity;
 
   return (
     <div>
