@@ -122,3 +122,8 @@ h1 {
 	box-sizing: border-box;
 	background: linear-gradient(to left, #6666ff 0%, #6699ff 100%);
 }
+
+.balanceSheetContainer{
+	display: flex;
+	column-gap: 1rem;
+}

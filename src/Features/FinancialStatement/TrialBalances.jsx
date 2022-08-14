@@ -9,8 +9,8 @@ function TrialBalances() {
 	const { documents, error } = useCollection("generalEntry");
 
 	const [debitAndCreditTotal, setDebitAndCreditTotal] = useState({
-		debit: 0,
-		credit: 0,
+		debits: 0,
+		credits: 0,
 	});
 
 	const { netTotal, assetsTotal, liabTotal, endingOwnerEquity, ownerWithDraw, ownerEquity, revTotal, expTotal, tbBalances } =
@@ -71,8 +71,8 @@ function TrialBalances() {
 								<TableCell align="left">
 									<h4>Total</h4>
 								</TableCell>
-								<TableCell align="right">2000</TableCell>
-								<TableCell align="right">3000</TableCell>
+								<TableCell align="right">{debitAndCreditTotal.debits}</TableCell>
+								<TableCell align="right">{debitAndCreditTotal.credits}</TableCell>
 							</TableRow>
 						</TableBody>
 					</Table>

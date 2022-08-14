@@ -8,7 +8,6 @@ export const allTypesData = (documents) => {
 	let ownerEquity = 0; //bs
 	let endingOwnerEquity = 0; //bs
 	let tbBalances = {};
-	console.log("==============");
 
 	documents &&
 		documents.map((arr) => {
@@ -30,9 +29,9 @@ export const allTypesData = (documents) => {
 		});
 	netTotal = revTotal - expTotal;
 	endingOwnerEquity = netTotal - ownerWithDraw;
-	console.log("TBBBB");
-	console.log(tbBalances);
-	console.log("TBBBB");
+	// console.log("TBBBB");
+	// console.log(tbBalances);
+	// console.log("TBBBB");
 	// console.log(assetsTotal,liabTotal);
 	return {
 		revTotal,
@@ -47,6 +46,15 @@ export const allTypesData = (documents) => {
 	};
 };
 
+
+/**
+ * this modelled data us used in 
+ * Trial balance 
+ * Adjusted trial balance
+ * Balance Sheet
+ * Income Statement
+ * Owner's Equity Statmenet 
+ */
 const calculateBalancesForTrialBalance = (obj, tbBalances) => {
 
 	const { typeA, debit, typeB, credit, debitInfo, creditInfo } = obj || {}; //type and amount

@@ -5,6 +5,7 @@ import GeneralEntries from '../Features/GeneralJournal';
 import FinancialStatementMainComponent from '../Features/FinancialStatement';
 import InvomeStatement from '../Features/FinancialStatement/InvomeStatement';
 import TrialBalances from '../Features/FinancialStatement/TrialBalances';
+import BalanceSheet from '../Features/FinancialStatement/BalanceSheet';
 
 function RouterSwitch() {
   return (
@@ -14,6 +15,7 @@ function RouterSwitch() {
       <Route path="/financial-statement" element={<FinancialStatementMainComponent />} />
       <Route path="/trial-balances" element={<TrialBalances />} />
       <Route path="/income-statement" element={<InvomeStatement />} />
+      <Route path="/balance-sheet" element={<BalanceSheet />} />
     </Routes>
 
 
