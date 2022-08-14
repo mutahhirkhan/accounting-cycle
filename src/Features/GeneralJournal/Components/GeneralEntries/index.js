@@ -26,7 +26,9 @@ const rows = [
 function GeneralEntries() {
 
   const { documents, error } = useCollection("generalEntry");
-  console.log("general entries",documents)
+  
+    // console.log("general entries",documents)
+
   const renderGeneralEnrties = () => {
     return documents && documents.map((arr, index) => {
       const { typeA, debitInfo, debit, } = arr[0];

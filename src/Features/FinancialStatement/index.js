@@ -43,7 +43,7 @@ function FinancialStatementMainComponent() {
                else if (typeB == "Liability") liabTotal += Number(credit);
             }
 			});
-		console.log("======");
+		// console.log("======");
       // if(!flag){
       //    console.log('counter',counter); flag = !flag
       // }  

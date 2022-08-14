@@ -93,6 +93,7 @@ const calculateBalancesForTrialBalance = (obj, tbBalances) => {
 				tbBalances[obj["creditInfo"]] = {
 					nature: "credit",
 					amount: Number(credit),
+					type: typeA ? typeA : typeB
 				};
 		}
 		// DEBIT entry for asset, owner withdraw and expense
@@ -128,6 +129,7 @@ const calculateBalancesForTrialBalance = (obj, tbBalances) => {
 				tbBalances[obj["creditInfo"]] = {
 					nature: "debit",
 					amount: Number(debit),
+					type: typeA ? typeA : typeB
 				};
 			}
 		}
