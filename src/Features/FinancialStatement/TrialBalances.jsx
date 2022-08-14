@@ -40,7 +40,7 @@ function TrialBalances() {
 		setDebitAndCreditTotal({ debits, credits });
 	};
 	return (
-		<div style={{ display: "grid", gridTemplateColumns: "10fr 80fr 10fr" }}>
+		<div className="div">
 			<div></div>
 			<div>
 				<h1>Adjusted Trial Balance</h1>

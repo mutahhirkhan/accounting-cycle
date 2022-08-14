@@ -120,7 +120,11 @@ h1 {
 	text-align: center;
 	align-items: center;
 	box-sizing: border-box;
-	background: linear-gradient(to left, #6666ff 0%, #6699ff 100%);
+	/* background: linear-gradient(to left, #6666ff 0%, #6699ff 100%); */
+}
+.div{
+	display: grid;
+	grid-template-columns: 10fr 80fr 10fr;
 }
 
 .balanceSheetContainer{
