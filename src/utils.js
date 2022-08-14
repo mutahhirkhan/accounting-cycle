@@ -13,7 +13,6 @@ export const allTypesData = (documents) => {
 	documents &&
 		documents.map((arr) => {
 			for (let i = 0; i < Object.keys(arr).length; i++) {
-				// counter++;
 				const { typeA, debit, typeB, credit, debitInfo, creditInfo } = arr[i] || {}; //type and amount
 
 				tbBalances = calculateBalancesForTrialBalance({ typeA, debit, typeB, credit, debitInfo, creditInfo }, tbBalances);
@@ -21,18 +20,13 @@ export const allTypesData = (documents) => {
 				if (typeA == "Expense") expTotal += Number(debit);
 				else if (typeA == "Owner withdraw") ownerWithDraw += Number(debit);
 				else if (typeA == "Revenue") revTotal -= Number(debit);
-				else if (typeA == "Asset") {
-					// console.log('add', creditInfo, debitInfo, debit);
-					assetsTotal += Number(debit);
-				} else if (typeA == "Liability") liabTotal -= Number(debit);
+				else if (typeA == "Asset") assetsTotal += Number(debit);
+				else if (typeA == "Liability") liabTotal -= Number(debit);
 				else if (typeB == "Revenue") revTotal += Number(credit);
 				else if (typeB == "Owner Equity") ownerEquity += Number(credit);
-				else if (typeB == "Asset") {
-					// console.log('less', creditInfo, debitInfo, credit);
-					assetsTotal -= Number(credit);
-				} else if (typeB == "Liability") liabTotal += Number(credit);
+				else if (typeB == "Asset") assetsTotal -= Number(credit);
+				else if (typeB == "Liability") liabTotal += Number(credit);
 			}
-			// console.log("after tb", tbBalances);
 		});
 	netTotal = revTotal - expTotal;
 	endingOwnerEquity = netTotal - ownerWithDraw;
@@ -53,23 +47,17 @@ export const allTypesData = (documents) => {
 };
 
 const calculateBalancesForTrialBalance = (obj, tbBalances) => {
-	// if(!tbBalances)  {
-	// console.log('gotcha',obj);
-	// // return tbBalances
-	// }
-	// console.log("tbBalace", tbBalances);
 
 	const { typeA, debit, typeB, credit, debitInfo, creditInfo } = obj || {}; //type and amount
 
 	//is destructuring from empty field e.g. createdAt
 	if (!obj["creditInfo"]) return tbBalances;
 
-	let isAssetWithdrawExpense = ["Asset", "Owner withdraw", "Expense"].some((el) => el == typeA || el == typeB);
+	let isValidAccount = ["Asset", "Owner withdraw", "Expense", "Liability", "Owner Equity", "Revenue"].some(
+		(el) => el == typeA || el == typeB
+	);
 
-	if (isAssetWithdrawExpense) {
-		if (obj["creditInfo"] == "cash") {
-			console.log("cash nature before", tbBalances[obj["creditInfo"]]?.nature, tbBalances[obj["creditInfo"]]?.amount);
-		}
+	if (isValidAccount) {
 		if (credit) {
 			//if cash account is not created in tbBalnce then create first
 			if (tbBalances[obj["creditInfo"]]) {
@@ -142,52 +130,10 @@ const calculateBalancesForTrialBalance = (obj, tbBalances) => {
 				};
 			}
 		}
-		if (obj["creditInfo"] == "cash") {
-			console.log("cash nature after", tbBalances[obj["creditInfo"]]?.nature, tbBalances[obj["creditInfo"]]?.amount);
-		}
 		//return the updated tbBalances object
 		return tbBalances;
 	}
-	/**
-   * 
-  
-  if (typeA == "Asset" || typeB == "Asset") {
-		if (credit) {
-      //adding on same nature because it's rule for ledger account
-      //if cash account is not created in tbBalnce then create first
-			if (tbBalances[obj["creditInfo"]]) tbBalances[obj["creditInfo"]] += Number(credit);
-			else tbBalances[obj["creditInfo"]] = Number(credit);
-		} else {
-      //subtracting on different natures becasue it's rule to subtract on different nature and add on same nature
-			if (tbBalances[obj["creditInfo"]]) tbBalances[obj["creditInfo"]] -= Number(debit);
-			else tbBalances[obj["creditInfo"]] = Number(debit);
-		}
-    if(obj["creditInfo"] == 'cash') console.log(debit, credit);
-    console.log("checking cash",tbBalances.cash);
-    return tbBalances;
-	}
-	if (typeA == "Owner withdraw" || typeB == "Owner withdraw") {
-		if (credit) {
-			if (tbBalances[obj["creditInfo"]]) tbBalances[obj["creditInfo"]] += Number(credit);
-			else tbBalances[obj["creditInfo"]] = Number(credit);
-		} else {
-			if (tbBalances[obj["creditInfo"]]) tbBalances[obj["creditInfo"]] -= Number(debit);
-			else tbBalances[obj["creditInfo"]] = Number(debit);
-		}
-		return tbBalances;
-	}
-	if (typeA == "Expense" || typeB == "Expense") {
-		if (credit) {
-			if (tbBalances[obj["creditInfo"]]) tbBalances[obj["creditInfo"]] += Number(credit);
-			else tbBalances[obj["creditInfo"]] = Number(credit);
-		} else {
-			if (tbBalances[obj["creditInfo"]]) tbBalances[obj["creditInfo"]] -= Number(debit);
-			else tbBalances[obj["creditInfo"]] = Number(debit);
-		}
-		return tbBalances;
-	}
-  */
 
-	//if none of them matched, return the original tbBalances object
+	//if none of them matched with pre-defined accounts, return the original tbBalances object
 	return tbBalances;
 };
