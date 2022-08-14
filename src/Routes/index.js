@@ -3,8 +3,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // import Dashboard from '../Features/Dashboard';
 import GeneralEntries from '../Features/GeneralJournal';
 import FinancialStatementMainComponent from '../Features/FinancialStatement';
-import BalanceSheet from '../Features/FinancialStatement/BalanceSheet';
 import InvomeStatement from '../Features/FinancialStatement/InvomeStatement';
+import TrialBalances from '../Features/FinancialStatement/TrialBalances';
 
 function RouterSwitch() {
   return (
@@ -12,7 +12,7 @@ function RouterSwitch() {
     <Routes>
       <Route path="/" element={<GeneralEntries />} />
       <Route path="/financial-statement" element={<FinancialStatementMainComponent />} />
-      <Route path="/balance-Sheet" element={<BalanceSheet />} />
+      <Route path="/trial-balances" element={<TrialBalances />} />
       <Route path="/income-statement" element={<InvomeStatement />} />
     </Routes>
 

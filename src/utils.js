@@ -43,6 +43,7 @@ export const allTypesData = (documents) => {
 		liabTotal,
 		ownerEquity,
 		endingOwnerEquity,
+		tbBalances
 	};
 };
 
