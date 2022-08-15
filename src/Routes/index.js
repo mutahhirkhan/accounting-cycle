@@ -6,6 +6,7 @@ import InvomeStatement from '../Features/FinancialStatement/InvomeStatement';
 import TrialBalances from '../Features/FinancialStatement/TrialBalances';
 import BalanceSheet from '../Features/FinancialStatement/BalanceSheet';
 import GeneralEntries from '../Features/GeneralJournal/Components/GeneralEntries';
+import OwnerEquity from '../Features/FinancialStatement/OwnerEquity';
 
 function RouterSwitch() {
   return (
@@ -17,6 +18,8 @@ function RouterSwitch() {
       <Route path="/income-statement" element={<InvomeStatement />} />
       <Route path="/balance-sheet" element={<BalanceSheet />} />
       <Route path="/general-entries" element={<GeneralEntries />} />
+      {/* add owner-equity route */}
+      <Route path="/owner-equity" element={<OwnerEquity />} />
     </Routes>
 
 

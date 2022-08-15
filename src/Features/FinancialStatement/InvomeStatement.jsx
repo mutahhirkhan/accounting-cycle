@@ -14,24 +14,26 @@ const InvomeStatement = () => {
 
 	useEffect(() => {
 		let tempFilterredRevenues = [];
-		Object.entries(tbBalances).forEach((entry) => {
-			if (entry?.[1].type === "Revenue") {
+		let tempFilterredExpanses = [];
+		
+		Object.entries(tbBalances).forEach(([key, value]) => {
+			if (value.type === "Revenue") {
 				tempFilterredRevenues.push({
-					...entry[1],
-					name: entry[0],
+					...value,
+					name: key,
 				});
 			}
 		});
 
-		let tempFilterredExpanses = [];
-		Object.entries(tbBalances).filter((entry) => {
-			if (entry?.[1].type === "Expense") {
+		Object.entries(tbBalances).filter(([key, value]) => {
+			if (value.type === "Expense") {
 				tempFilterredExpanses.push({
-					...entry[1],
-					name: entry[0],
+					...value,
+					name: key,
 				});
 			}
 		});
+
 		setFilterredRevenues(tempFilterredRevenues);
 		setFilterredExpanses(tempFilterredExpanses);
 	}, [Object.keys(tbBalances).length]);
