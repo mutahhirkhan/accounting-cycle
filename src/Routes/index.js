@@ -13,7 +13,7 @@ function RouterSwitch() {
 
     <Routes>
       <Route path="/" element={<GeneralEntriesContainer />} />
-      <Route path="/financial-statement" element={<FinancialStatementMainComponent />} />
+      {/* <Route path="/financial-statement" element={<FinancialStatementMainComponent />} /> */}
       <Route path="/trial-balances" element={<TrialBalances />} />
       <Route path="/income-statement" element={<InvomeStatement />} />
       <Route path="/balance-sheet" element={<BalanceSheet />} />
