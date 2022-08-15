@@ -59,14 +59,14 @@ function BalanceSheet() {
 	}
 
 	return (
-		<div style={{ display: "grid", gridTemplateColumns: "10fr 80fr 10fr" }}>
+		<div style={{ display: "grid", gridTemplateColumns: "8fr 84fr 8fr" }}>
 			<div></div>
 			<div>
 				<h1> Balance Sheet </h1>
-				<div className="balanceSheetContainer">
-					<TableContainer component={Paper}>
+				<div className="balance-sheet-container">
+					<TableContainer className="financial-container" component={Paper}>
 						{/* TABLE FOR ASSETS */}
-						<Table sx={{ minWidth: 300 }} aria-label="simple table">
+						<Table className="financial-tables" sx={{ minWidth: 300 }} aria-label="simple table">
 							<TableHead>
 								<TableRow>
 									<TableCell align="left">
@@ -100,9 +100,9 @@ function BalanceSheet() {
 						</Table>
 					</TableContainer>
 
-					<TableContainer component={Paper}>
+					<TableContainer className="financial-container" component={Paper}>
 						{/* TABLE FOR ASSETS */}
-						<Table sx={{ minWidth: 300 }} aria-label="simple table">
+						<Table className="financial-tables" sx={{ minWidth: 300 }} aria-label="simple table">
 							<TableHead>
 								<TableRow>
 									<TableCell align="left">

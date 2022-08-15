@@ -21,8 +21,8 @@ function GeneralEntries() {
       <div></div>
       <div>
         <h1>General Entries</h1>
-        <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <TableContainer className="financial-container" component={Paper}>
+          <Table className="financial-tables" sx={{ minWidth: 650 }} aria-label="simple table">
             <TableHead>
               <TableRow>
                 <TableCell><h5>Date</h5></TableCell>
