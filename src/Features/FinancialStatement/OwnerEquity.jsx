@@ -31,7 +31,7 @@ const OwnerEquity = () => {
 
 	useEffect(() => {
 		let tempFilterredRevenues = [];
-		let tempFilterredExpanses = [];
+		let tempFilterredExpenses = [];
 		let tempFilterredWithdraws = [];
 		let tempFilterredOwnerCapital = [];
 		let netIncome = 0;
@@ -40,7 +40,7 @@ const OwnerEquity = () => {
 		let endingCapital = 0;
 
 		tempFilterredRevenues = getFilteredArray(tbBalances, "Revenue");
-		tempFilterredExpanses = getFilteredArray(tbBalances, "Expense");
+		tempFilterredExpenses = getFilteredArray(tbBalances, "Expense");
 
 		tempFilterredWithdraws = getFilteredArray(tbBalances, "Owner withdraw");
 		tempFilterredOwnerCapital = getFilteredArray(tbBalances, "Owner Equity");
@@ -56,7 +56,7 @@ const OwnerEquity = () => {
 
 		// Object.entries(tbBalances).filter(([key, value]) => {
 		// 	if (value.type === "Expense") {
-		// 		tempFilterredExpanses.push({
+		// 		tempFilterredExpenses.push({
 		// 			...value,
 		// 			name: key,
 		// 		});
@@ -73,7 +73,7 @@ const OwnerEquity = () => {
 		// });
 
 		tempFilterredRevenues.forEach((item) => (netIncome += item.amount));
-		tempFilterredExpanses.forEach((item) => (netIncome -= item.amount));
+		tempFilterredExpenses.forEach((item) => (netIncome -= item.amount));
 
 		tempFilterredWithdraws.forEach((item) => (drawings += item.amount));
 		tempFilterredOwnerCapital.forEach((item) => (openingCapital += item.amount));

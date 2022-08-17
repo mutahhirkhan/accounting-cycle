@@ -7,15 +7,15 @@ import "./financialstatement.css";
 const IncomeStatement = () => {
 	const { documents } = useCollection("generalEntry");
 	const [filterredRevenues, setFilterredRevenues] = useState([]);
-	const [filterredExpanses, setFilterredExpanses] = useState([]);
+	const [filterredExpenses, setFilterredExpenses] = useState([]);
 
 	const { netTotal, assetsTotal, liabTotal, endingOwnerEquity, ownerWithDraw, ownerEquity, revTotal, expTotal, tbBalances } =
 		allTypesData(documents);
 
 	useEffect(() => {
 		let tempFilterredRevenues = [];
-		let tempFilterredExpanses = [];
-		
+		let tempFilterredExpenses = [];
+
 		Object.entries(tbBalances).forEach(([key, value]) => {
 			if (value.type === "Revenue") {
 				tempFilterredRevenues.push({
@@ -27,7 +27,7 @@ const IncomeStatement = () => {
 
 		Object.entries(tbBalances).filter(([key, value]) => {
 			if (value.type === "Expense") {
-				tempFilterredExpanses.push({
+				tempFilterredExpenses.push({
 					...value,
 					name: key,
 				});
@@ -35,7 +35,7 @@ const IncomeStatement = () => {
 		});
 
 		setFilterredRevenues(tempFilterredRevenues);
-		setFilterredExpanses(tempFilterredExpanses);
+		setFilterredExpenses(tempFilterredExpenses);
 	}, [Object.keys(tbBalances).length]);
 
 	const getNetIncomeOrNetLoss = () => {
@@ -43,7 +43,7 @@ const IncomeStatement = () => {
 		filterredRevenues.forEach((item) => {
 			netIncome += item.amount;
 		});
-		filterredExpanses.forEach((item) => {
+		filterredExpenses.forEach((item) => {
 			netIncome -= item.amount;
 		});
 		return netIncome;
@@ -81,12 +81,12 @@ const IncomeStatement = () => {
 						<TableHead>
 							<TableRow>
 								<TableCell align="left">
-									<h5> Expanses </h5>
+									<h5> Expenses </h5>
 								</TableCell>
 							</TableRow>
 						</TableHead>
 						<TableBody>
-							{filterredExpanses.map((revenue, i) => (
+							{filterredExpenses.map((revenue, i) => (
 								<TableRow key={i + 1}>
 									<TableCell align={`left `}>{revenue.name}</TableCell>
 									{revenue.nature === "debit" ? <TableCell align="right">{revenue.amount}</TableCell> : <TableCell />}
