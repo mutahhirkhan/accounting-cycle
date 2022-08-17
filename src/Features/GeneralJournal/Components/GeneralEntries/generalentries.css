@@ -35,3 +35,9 @@
   display: flex;
   flex-flow: column;
 }
+.remove-padding{
+  padding-top: inherit !important;
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+  padding-bottom: inherit !important;
+}
