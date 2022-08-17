@@ -18,9 +18,9 @@ const getFilteredArray = (objectOfEntries, type) => {
 
 const OwnerEquity = () => {
 	const { documents, error } = useCollection("generalEntry");
-  const EquityAccounts = [];
+	const EquityAccounts = [];
 	const [ownerEquityStatement, setOwnerEquityStatement] = useState([
-		{ name: '', value: 0 },
+		{ name: "", value: 0 },
 		// { netIncomeOrLoss: 0 },
 		// { drawings: 0 },
 		// { endingCapital: 0 },
@@ -35,16 +35,16 @@ const OwnerEquity = () => {
 		let tempFilterredWithdraws = [];
 		let tempFilterredOwnerCapital = [];
 		let netIncome = 0;
-    let drawings = 0;
-    let openingCapital = 0;
-    let endingCapital = 0;
+		let drawings = 0;
+		let openingCapital = 0;
+		let endingCapital = 0;
 
 		tempFilterredRevenues = getFilteredArray(tbBalances, "Revenue");
 		tempFilterredExpanses = getFilteredArray(tbBalances, "Expense");
 
 		tempFilterredWithdraws = getFilteredArray(tbBalances, "Owner withdraw");
 		tempFilterredOwnerCapital = getFilteredArray(tbBalances, "Owner Equity");
-    
+
 		// Object.entries(tbBalances).forEach(([key, value]) => {
 		// 	if (value.type === "Revenue") {
 		// 		tempFilterredRevenues.push({
@@ -72,27 +72,23 @@ const OwnerEquity = () => {
 		// 	}
 		// });
 
-		tempFilterredRevenues.forEach(item => netIncome += item.amount);
-		tempFilterredExpanses.forEach(item => netIncome -= item.amount);
+		tempFilterredRevenues.forEach((item) => (netIncome += item.amount));
+		tempFilterredExpanses.forEach((item) => (netIncome -= item.amount));
 
-    tempFilterredWithdraws.forEach(item => drawings += item.amount);
-    tempFilterredOwnerCapital.forEach(item => openingCapital += item.amount);
+		tempFilterredWithdraws.forEach((item) => (drawings += item.amount));
+		tempFilterredOwnerCapital.forEach((item) => (openingCapital += item.amount));
 
-
-
-    setOwnerEquityStatement([
-      {name: "Opening Capital", value: openingCapital},
-      {name: "Net Income/Loss", value: netIncome},
-      {name: "Drawings", value: drawings},
-      {name: "Ending Capital", value: openingCapital + netIncome - drawings},
-    ])
-    
-    
+		setOwnerEquityStatement([
+			{ name: "Opening Capital", value: openingCapital },
+			{ name: "Net Income/Loss", value: netIncome },
+			{ name: "Drawings", value: drawings },
+			{ name: "Ending Capital", value: openingCapital + netIncome - drawings },
+		]);
 	}, [Object.keys(tbBalances).length]);
 
 	return (
 		<div className="div">
-    {console.log(ownerEquityStatement)}
+			{console.log(ownerEquityStatement)}
 			<div></div>
 			<div>
 				<h1> Statement Of Owner's Equity </h1>
@@ -113,12 +109,11 @@ const OwnerEquity = () => {
 
 						<TableBody>
 							{ownerEquityStatement.map((equityItem) => (
-                <TableRow>
+								<TableRow>
 									<TableCell align={"left"}>{`${equityItem.name}`}</TableCell>
 									<TableCell align={"right"}>{`${equityItem.value}`}</TableCell>
 								</TableRow>
 							))}
-
 						</TableBody>
 					</Table>
 				</TableContainer>

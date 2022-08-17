@@ -62,11 +62,11 @@ function TrialBalances() {
 							</TableRow>
 						</TableHead>
 						<TableBody>
-							{Object.entries(tbBalances).map((entry, i) => (
+							{Object.entries(tbBalances).map(([key, value], i) => (
 								<TableRow key={i + 1}>
-									<TableCell align={`${entry[1].nature === "credit" ? "right" : "left"}`}>{entry[0]}</TableCell>
-									{entry[1].nature === "debit" ? <TableCell align="right">{entry[1].amount}</TableCell> : <TableCell />}
-									{entry[1].nature === "credit" ? <TableCell align="right">{entry[1].amount}</TableCell> : <TableCell />}
+									<TableCell align={`${value.nature === "credit" ? "right" : "left"}`}>{key}</TableCell>
+									{value.nature === "debit" ? <TableCell align="right">{value.amount}</TableCell> : <TableCell />}
+									{value.nature === "credit" ? <TableCell align="right">{value.amount}</TableCell> : <TableCell />}
 								</TableRow>
 							))}
 							<TableRow>

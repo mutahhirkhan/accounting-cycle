@@ -4,7 +4,7 @@ import { allTypesData } from "../../utils";
 import { Table, Paper, TableBody, TableHead, TableContainer, TableCell, TableRow } from "@mui/material";
 import "./financialstatement.css";
 
-const InvomeStatement = () => {
+const IncomeStatement = () => {
 	const { documents } = useCollection("generalEntry");
 	const [filterredRevenues, setFilterredRevenues] = useState([]);
 	const [filterredExpanses, setFilterredExpanses] = useState([]);
@@ -115,4 +115,4 @@ const InvomeStatement = () => {
 	);
 };
 
-export default InvomeStatement;
+export default IncomeStatement;
