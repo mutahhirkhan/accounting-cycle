@@ -31,3 +31,7 @@
   box-sizing: border-box;
   /* background: linear-gradient(to left, #6666ff 0%, #6699ff 100%); */
 }
+.flexing-description{
+  display: flex;
+  flex-flow: column;
+}
