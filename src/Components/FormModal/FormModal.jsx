@@ -2,7 +2,7 @@
 import React, { useState, useId } from "react";
 import { useAuthContext } from "./../../hooks/useAuthContext";
 import { useFirestore } from "./../../hooks/useFirestore";
-// import "./FormModal.css";
+import "./FormModal.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import FormInput from "../FormInput/FormInput";
 import { Card, CardContent, makeStyles } from "@material-ui/core";
@@ -18,10 +18,6 @@ const useStyles = makeStyles(() => ({
 	inner: {
 		display: "grid",
 		gridTemplateColumns: "40fr 30fr 30fr",
-	},
-	flex: {
-		display: "flex",
-		justifyContent: "flexStart",
 	},
 	scroll: {
 		overflowY: "scroll",
@@ -206,37 +202,25 @@ function FormModal() {
 							))}
 						</form>
 					</div>
-					<div className={classes.inner}>
+						<div className={classes.inner}>
 						<div className="entry" style={{ display: "flex", justifyContent: "flex-start" }}>
-							<div className="center">
-								<label>Add Debit Entry </label>
-							</div>
-							<div className="center">
-								<button className={`btn btn-primary `} onClick={() => addClickHandler("d")}>
-									+
-								</button>
-							</div>
+							<Button className={classes.creditDebitBtn} onClick={() => addClickHandler("d")} variant="contained">
+								Add Debit Entry
+							</Button>
 						</div>
-
 						<div className="entry" style={{ display: "flex", justifyContent: "flex-start" }}>
-							<div>
-								<label>Add Credit Entry </label>
-							</div>
-							<div>
-								<button className={` btn btn-primary`} onClick={() => addClickHandler("c")}>
-									+
-								</button>
-							</div>
+							<Button className={classes.creditDebitBtn} onClick={() => addClickHandler("c")} variant="contained">
+								Add Credit Entry
+							</Button>
 						</div>
-						<div className="submit-section" style={{ display: "flex", justifyContent: "center" }}>
-							<div>
-								<p className="alert alert-warning" hidden={!error}>
-									{error}
-								</p>
-								<button type="submit" className={`btn btn-primary `} onClick={postGeneralEntryHandler}>
-									Submit
-								</button>
-							</div>
+						<div style={{ display: "flex", justifyContent: "center" }}>
+							<p className="alert alert-warning" hidden={!error}>
+								{error}
+							</p>
+							<Button className={classes.creditDebitBtn} type="submit" onClick={postGeneralEntryHandler}>
+								{" "}
+								Submit{" "}
+							</Button>
 						</div>
 					</div>
 				</CardContent>
