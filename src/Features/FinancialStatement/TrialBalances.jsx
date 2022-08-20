@@ -1,3 +1,4 @@
+import { makeStyles } from "@material-ui/core";
 import { Paper, Table, TableBody, TableContainer, TableHead, TableRow, TableCell } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import { useCollection } from "../../hooks/useCollection";
@@ -5,7 +6,17 @@ import { allTypesData } from "../../utils";
 import "./financialstatement.css";
 
 let Beginnigbalance = 28500;
+const useStyles = makeStyles({
+	root: {
+	  borderRadius:'50px',
+	  "& .MuiTableCell-head": {
+		color: "white",
+		background: "linear-gradient(#d64c7f,#ee4758)"
+	  },
+	}
+  });
 function TrialBalances() {
+	const classes=useStyles()
 	const { documents, error } = useCollection("generalEntry");
 
 	const [debitAndCreditTotal, setDebitAndCreditTotal] = useState({
@@ -49,7 +60,7 @@ function TrialBalances() {
 				<TableContainer className="financial-container" component={Paper}>
 					<Table className="financial-tables" sx={{ minWidth: 650 }} aria-label="simple table">
 						<TableHead>
-							<TableRow>
+							<TableRow className={classes.root}>
 								<TableCell align="left">
 									<h5>Accounts name</h5>
 								</TableCell>

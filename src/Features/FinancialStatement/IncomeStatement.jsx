@@ -3,8 +3,19 @@ import { useCollection } from "../../hooks/useCollection";
 import { allTypesData } from "../../utils";
 import { Table, Paper, TableBody, TableHead, TableContainer, TableCell, TableRow } from "@mui/material";
 import "./financialstatement.css";
+import { makeStyles } from "@material-ui/core";
 
+ const useStyles = makeStyles({
+  root: {
+    borderRadius:'50px',
+    "& .MuiTableCell-head": {
+      color: "white",
+      background: "linear-gradient(#d64c7f,#ee4758)"
+    },
+  }
+});
 const IncomeStatement = () => {
+	const classes=useStyles()
 	const { documents } = useCollection("generalEntry");
 	const [filterredRevenues, setFilterredRevenues] = useState([]);
 	const [filterredExpenses, setFilterredExpenses] = useState([]);
@@ -57,7 +68,7 @@ const IncomeStatement = () => {
 				<TableContainer className="financial-container" component={Paper}>
 					<Table className="financial-tables" sx={{ minWidth: 650 }} aria-label="simple table">
 						<TableHead>
-							<TableRow>
+							<TableRow className={classes.root}>
 								<TableCell align="left">
 									<h5> Revenues </h5>
 								</TableCell>

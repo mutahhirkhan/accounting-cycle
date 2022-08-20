@@ -9,7 +9,7 @@ ul {
 
 
 .navbar{
-  background: var(--dark-grayy);
+  background: linear-gradient(25deg,#d64c7f,#ee4758 50%);
   /* border-radius: 10px; */
   /* background-repeat: no-repeat; */
   /* background-size: 100% 100%; */
@@ -31,7 +31,8 @@ ul {
   text-decoration: none;
   color: var(--off-white);
   font-size: x-large;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: fantasy;
+  /* font-family: Georgia, 'Times New Roman', Times, serif; */
   transition: all 300ms ease-in-out;
   padding-left: 30px;
 }

@@ -1,11 +1,22 @@
+import { makeStyles } from "@material-ui/core";
 import { Paper, Table, TableBody, TableContainer, TableHead, TableRow, TableCell } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import { useCollection } from "../../hooks/useCollection";
 import { allTypesData } from "../../utils";
 import "./financialstatement.css";
 
+const useStyles = makeStyles({
+	root: {
+	  borderRadius:'50px',
+	  "& .MuiTableCell-head": {
+		color: "white",
+		background: "linear-gradient(#d64c7f,#ee4758)"
+	  },
+	}
+  });
 let Beginnigbalance = 28500;
 function BalanceSheet() {
+	const classes=useStyles()
 	const { documents, error } = useCollection("generalEntry");
 	const [filterredAssets, setFilterredAssets] = useState([]);
 	const [filterredLiabilityAndCapital, setFilterredLiabilityAndCapital] = useState([]);
@@ -68,7 +79,7 @@ function BalanceSheet() {
 						{/* TABLE FOR ASSETS */}
 						<Table className="financial-tables" sx={{ minWidth: 300 }} aria-label="simple table">
 							<TableHead>
-								<TableRow>
+								<TableRow className={classes.root}>
 									<TableCell align="left">
 										<h5>Assets</h5>
 									</TableCell>
@@ -104,7 +115,7 @@ function BalanceSheet() {
 						{/* TABLE FOR ASSETS */}
 						<Table className="financial-tables" sx={{ minWidth: 300 }} aria-label="simple table">
 							<TableHead>
-								<TableRow>
+								<TableRow className={classes.root}>
 									<TableCell align="left">
 										<h5>Liabilities</h5>
 									</TableCell>
