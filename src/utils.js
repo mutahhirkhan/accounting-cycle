@@ -158,5 +158,27 @@ export const useStyles = makeStyles({
 		color: "white",
 		background: "linear-gradient(#8360c3, #2ebf91)"
 	  },
-	}
+	},
+	formroot: {
+		margin: "30px",
+		background: "#fafafa",
+		boxShadow: "2px 1px 20px 0px #bdbdbd",
+		borderRadius: "12px",
+	},
+	inner: {
+		display: "grid",
+		gridTemplateColumns: "40fr 30fr 30fr",
+	},
+	scroll: {
+		overflowY: "scroll",
+		height: "180px",
+	},
+	creditDebitBtn: {
+		background: "#00667e",
+		color: "white",
+		"&:hover": {
+			background: "#303952",
+		},
+	},
   });
+
