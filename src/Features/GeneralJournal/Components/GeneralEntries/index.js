@@ -11,17 +11,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import "../../../FinancialStatement/financialstatement.css";
-import { makeStyles } from "@material-ui/core";
-
- const useStyles = makeStyles({
-  root: {
-    borderRadius:'50px',
-    "& .MuiTableCell-head": {
-      color: "white",
-      background: "linear-gradient(#d64c7f,#ee4758)"
-    },
-  }
-});
+import { useStyles } from "../../../../utils";
 
 function GeneralEntries() {
   const classes = useStyles();

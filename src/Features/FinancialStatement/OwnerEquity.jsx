@@ -9,8 +9,7 @@ import {
   Paper,
 } from "@mui/material";
 import { useCollection } from "../../hooks/useCollection";
-import { allTypesData } from "../../utils";
-import { makeStyles } from "@material-ui/core";
+import { allTypesData, useStyles } from "../../utils";
 
 const getFilteredArray = (objectOfEntries, type) => {
   let filteredArray = [];
@@ -24,16 +23,6 @@ const getFilteredArray = (objectOfEntries, type) => {
   });
   return filteredArray;
 };
-const useStyles = makeStyles({
-  root: {
-    borderRadius: "50px",
-    "& .MuiTableCell-head": {
-      color: "white",
-      background: "linear-gradient(#d64c7f,#ee4758)",
-    },
-  },
-});
-
 const OwnerEquity = () => {
   const classes = useStyles();
   const { documents, error } = useCollection("generalEntry");

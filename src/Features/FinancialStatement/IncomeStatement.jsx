@@ -1,19 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useCollection } from "../../hooks/useCollection";
-import { allTypesData } from "../../utils";
+import { allTypesData, useStyles } from "../../utils";
 import { Table, Paper, TableBody, TableHead, TableContainer, TableCell, TableRow } from "@mui/material";
 import "./financialstatement.css";
-import { makeStyles } from "@material-ui/core";
 
- const useStyles = makeStyles({
-  root: {
-    borderRadius:'50px',
-    "& .MuiTableCell-head": {
-      color: "white",
-      background: "linear-gradient(#d64c7f,#ee4758)"
-    },
-  }
-});
 const IncomeStatement = () => {
 	const classes=useStyles()
 	const { documents } = useCollection("generalEntry");

@@ -1,3 +1,5 @@
+import { makeStyles } from '@material-ui/core/styles';
+
 export const allTypesData = (documents) => {
 	let revTotal = 0; //is
 	let expTotal = 0; //is
@@ -148,3 +150,13 @@ const calculateBalancesForTrialBalance = (obj, tbBalances) => {
 	//if none of them matched with pre-defined accounts, return the original tbBalances object
 	return tbBalances;
 };
+
+export const useStyles = makeStyles({
+	root: {
+	  borderRadius:'50px',
+	  "& .MuiTableCell-head": {
+		color: "white",
+		background: "linear-gradient(#8360c3, #2ebf91)"
+	  },
+	}
+  });
