@@ -92,5 +92,58 @@
     flex:4;
   }
   
+  .authForm{
+    height: 40em;
+    width: 30em;
+    /* background: lightpink; */
+    background: #ffff;
+    display: grid;
+    grid-template-rows: min-content 1fr min-content;
+    padding: 2em;
+    row-gap: 2em;
+    transform: translateX(-10%);
+}
+.authform-switcher{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    justify-items: start;
+}
+.underLine{
+    width: 50%;
+    height: 2px;
+    background: black;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%)translateY(4px);
+}
+.authform-btns{
+    /* background: lightsalmon; */
+    display: grid;
+    justify-items: center;
+}
+.seperator-or{
+/* background: chartreuse; */
+width: 100%;
+display: grid;
+grid-template-columns: 1fr min-content 1fr;
+align-items: center;
+column-gap: 0.5em;
+font-family: var(--para-font);
+}
+.seperator-or::before{
+    content: "";
+    width: 100%;
+    height: 1px;
+    background: black;
+}
+.seperator-or::after{
+    content: "";
+    width: 100%;
+    height: 1px;
+    background: black;
+}
+.authform-fields{
+    /* background:purple; */
+}
   
   
