@@ -35,6 +35,7 @@ const Adjusting = () => {
 		const { name, value } = e.target;
 		const list = [...debitVal];
 		list[i][name] = value;
+    console.log("onchanhge list",list)
 		setDebitVal(list);
 	};
 
@@ -43,7 +44,7 @@ const Adjusting = () => {
 		const list = [...creditVal];
 		// console.log(list[i][name])
 		list[i][name] = value;
-		// console.log(list);
+		console.log(list);
 		setCreditVal(list);
 	};
 
@@ -84,14 +85,22 @@ const Adjusting = () => {
 		const creditValue = creditVal.reduce((acc, { credit }) => acc + +credit, 0);
 		const id = Math.floor(Math.random() * 100);
 
-		if (debitValue === creditValue) {
-			const entriesToPost = [...debitVal.map((debitEntry) => debitEntry), ...creditVal.map((creditEntry) => creditEntry)];
-			console.log(entriesToPost);
-			dispatch({ type: "General_Entry", payload: entriesToPost });
-			await addDocument(entriesToPost);
-			setDebitVal([mockDebitEntries]);
-      setCreditVal([mockCreditEntries]);
-		} else {
+    if(
+      debitVal[0].debit 
+      && (debitVal[0].debitInfo || debitVal[0].creditInfo) 
+      && debitVal[0].typeA 
+      && creditVal[0].credit 
+      && creditVal[0].creditInfo 
+      && creditVal[0].typeB 
+      && debitValue === creditValue
+    ) {
+        const entriesToPost = [...debitVal.map((debitEntry) => debitEntry), ...creditVal.map((creditEntry) => creditEntry)];
+        console.log(entriesToPost);
+        dispatch({ type: "General_Entry", payload: entriesToPost });
+        await addDocument(entriesToPost);
+        setDebitVal([mockDebitEntries]);
+        setCreditVal([mockCreditEntries]);
+    }else {
 			setError("Debit and Credit value should be equal");
 		}
 	};

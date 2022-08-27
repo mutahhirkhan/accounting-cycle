@@ -156,7 +156,9 @@ export const useStyles = makeStyles({
 	  borderRadius:'50px',
 	  "& .MuiTableCell-head": {
 		color: "white",
-		background: "linear-gradient(#8360c3, #2ebf91)"
+		// background: "linear-gradient(#8360c3, #2ebf91)"
+		background: "#303952",
+
 	  },
 	},
 	formroot: {

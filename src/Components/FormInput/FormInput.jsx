@@ -1,11 +1,13 @@
 import React from "react";
-import IconButton from "@mui/material/IconButton";
+import {IconButton, TextField, MenuItem, Select, InputLabel, FormControl } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
+// import TextField from '@mui/material/TextField';
+
 
 const FormInput = ({ inputFields, Info, Name, Type, onChange, index, removeClickHandler }) => {
 	return (
 		<div className="form">
-			<div>
+			{/* <div>
 				<div className="input-group mb-3">
 					<span className="input-group-text" id="basic-addon1">
 						{" "}
@@ -20,11 +22,25 @@ const FormInput = ({ inputFields, Info, Name, Type, onChange, index, removeClick
 						id={Info}
 						onChange={(e) => onChange(e, index)}
 						value={Info === "Debit Info" ? inputFields.debitInfo : inputFields.creditInfo}
+						// here debit info is in the inverted comma, that is why it always render creditInfo as a field
+						// "'Debit Info'" === "Debit Info" which is false
 						name={Info === "Debit Info" ? "debitInfo" : "creditInfo"}
 					/>
 				</div>
-			</div>
-			<div>
+			</div> */}
+			
+			<TextField 
+				id={`${Info} outlined-size-small`} 
+				name={Info === "Debit Info" ? "debitInfo" : "creditInfo"} 
+				value={Info === "Debit Info" ? inputFields.debitInfo : inputFields.creditInfo} 
+				onChange={(e) => onChange(e, index)} 
+				type="text" 
+				label= {`${Info} Account Name`} 
+				variant="outlined" 
+				size="small"
+			/>
+
+			{/* <div>
 				<div className="input-group mb-3">
 					<span className="input-group-text" id="basic-addon1">
 						{" "}
@@ -42,10 +58,21 @@ const FormInput = ({ inputFields, Info, Name, Type, onChange, index, removeClick
 						name={Name === "Debit" ? "debit" : "credit"}
 					/>
 				</div>
-			</div>
+			</div> */}
+
+			<TextField 
+				id={`${Name} outlined-size-small `} 
+				value={Info === "Debit Info" ? inputFields.debit : inputFields.credit} 
+				name={Name === "Debit" ? "debit" : "credit"}
+				onChange={(e) => onChange(e, index)} 
+				type="number" 
+				label={`${Name} Amount`} 
+				variant="outlined" 
+				size="small"
+			/>
 			<div>
 				<div className="input-group mb-3">
-					<span className="input-group-text" id="basic-addon1">
+					{/* <span className="input-group-text" id="basic-addon1">
 						{" "}
 						{Type}{" "}
 					</span>
@@ -62,9 +89,32 @@ const FormInput = ({ inputFields, Info, Name, Type, onChange, index, removeClick
 						<option value="Revenue">Revenue</option>
 						<option value="Expense">Expense</option>
 						<option value="Owner withdraw">Owner withdraw</option>
-					</select>
+					</select> */}
+
+      				<FormControl sx={{ minWidth: 200 }}>
+						<InputLabel id="demo-controlled-open-select-label">{Type === "Type A" ? "Type A" : "Type B"}</InputLabel>
+						<Select
+							labelId="demo-controlled-open-select-label"
+							id="demo-select-small TypeA"
+							value={Info === "Debit Info" ? inputFields.typeA : inputFields.typeB}
+							onChange={(e) => onChange(e, index)}
+							name={Type === "Type A" ? "typeA" : "typeB"}
+							label={Type === "Type A" ? "typeA" : "typeB"}
+							size="small"
+							// onChange={handleChange}
+						>
+							<MenuItem value="Asset">Asset</MenuItem>
+							<MenuItem value="Liability">Liability</MenuItem>
+							<MenuItem value="Owner Equity">Owner Equity</MenuItem>
+							<MenuItem value="Revenue">Revenue</MenuItem>
+							<MenuItem value="Expense">Expense</MenuItem>
+							<MenuItem value="Owner withdraw">Owner withdraw</MenuItem>
+						</Select>
+					</FormControl>
+
 				</div>
 			</div>
+			
 			<div>
 				{/* <button disabled={index===0} className="btn btn-primary"
             onClick={(e) => { e.preventDefault();  Name === 'Debit' ? removeClickHandler('d', index) : removeClickHandler('c', index) }}

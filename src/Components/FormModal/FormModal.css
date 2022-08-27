@@ -91,18 +91,27 @@
   .entry div label{
     flex:4;
   }
+
+  .authFormWrapper{
+    display: grid;
+    grid-template-columns: 20fr 60fr 20fr;
+    height: calc(100vh - var(--nav-height));
+    height: 92vh; /*hard coding this value, because somehow calc not working with vh unit*/
+  }
   
   .authForm{
-    height: 40em;
-    width: 30em;
+    /* height: calc(100vh - var(--nav-height)); */
+    width: 100%;
     /* background: lightpink; */
     background: #ffff;
-    display: grid;
-    grid-template-rows: min-content 1fr min-content;
+    /* display: grid;
+    grid-template-rows: min-content 1fr min-content; */
     padding: 2em;
-    row-gap: 2em;
-    transform: translateX(-10%);
-}
+    flex-flow: column;
+
+    /* row-gap: 2em; */
+    /* transform: translateX(-10%);1 */
+  }
 .authform-switcher{
     display: grid;
     grid-template-columns: repeat(2,1fr);
@@ -143,7 +152,17 @@ font-family: var(--para-font);
     background: black;
 }
 .authform-fields{
+  width: inherit;
     /* background:purple; */
 }
   
-  
+.css-6hp17o-MuiList-root-MuiMenu-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  outline: 0;
+  flex-direction: column !important;
+}
