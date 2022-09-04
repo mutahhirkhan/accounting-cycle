@@ -25,7 +25,6 @@ const GneralEntry = () => {
   const [creditVal, setCreditVal] = useState([mockCreditEntries]);
   const [error, setError] = useState("");
 
-  // console.log("rest",restContext);
   const debitInfoChangeHandler = (e, i) => {
     const { name, value } = e.target;
     const list = [...debitVal];
@@ -110,6 +109,7 @@ const GneralEntry = () => {
             <form>
               {debitVal.map((debtValInput, index) => (
                 <FormInput
+                  key={index+1}
                   inputFields={debtValInput}
                   Info={"'Debit Info'"}
                   Name={"Debit"}
@@ -121,6 +121,7 @@ const GneralEntry = () => {
               ))}
               {creditVal.map((creditValValInput, index) => (
                 <FormInput
+                  key={index+1}
                   inputFields={creditValValInput}
                   Info={"'Credit Info'"}
                   Name={"Credit"}

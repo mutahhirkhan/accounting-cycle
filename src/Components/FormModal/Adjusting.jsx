@@ -109,7 +109,9 @@ const Adjusting = () => {
           <div className={classes.scroll}>
             <form>
               {debitVal.map((debtValInput, index) => (
+
                 <FormInput
+                  key={index+1}
                   inputFields={debtValInput}
                   Info={"'Debit Info'"}
                   Name={"Debit"}
@@ -121,6 +123,7 @@ const Adjusting = () => {
               ))}
               {creditVal.map((creditValValInput, index) => (
                 <FormInput
+                  key={index+1}
                   inputFields={creditValValInput}
                   Info={"'Credit Info'"}
                   Name={"Credit"}

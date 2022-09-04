@@ -16,7 +16,7 @@ import { useStyles } from "../../../../utils";
 function GeneralEntries() {
   const classes = useStyles();
   const getInnerCompoundEntries = (batchEntry) => {
-    console.log("entry", batchEntry);
+    // console.log("entry", batchEntry);
     let filterredFromGarbage = [];
     let generalEntriesArray = [];
     let validLength = 0;
@@ -38,7 +38,6 @@ function GeneralEntries() {
   };
 
   const getInnerCompoundEntriesdebit = (batchEntry, type) => {
-    console.log("entry", batchEntry);
     let filterredFromGarbage = [];
     let generalEntriesArray = [];
     let validLength = 0;

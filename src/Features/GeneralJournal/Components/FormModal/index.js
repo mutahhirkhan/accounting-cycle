@@ -1,12 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useId } from "react";
 import "./Form.css";
-// import { useAuthContext } from "../../../../hooks/useAuthContext";
 import { useFirestore } from "../../../../hooks/useFirestore";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function FormModal() {
-	// const { dispatch, generalEntry } = useAuthContext();
 	const { addDocument } = useFirestore("generalEntry");
 	const { addDocument: doc, response: resp } = useFirestore("generalEntry");
 
@@ -165,7 +163,6 @@ function FormModal() {
 		if (debitValue === creditValue) {
 			const entriesToPost = [...debitVal.map((debitEntry) => debitEntry), ...creditVal.map((creditEntry) => creditEntry)];
 			console.log(entriesToPost);
-			dispatch({ type: "General_Entry", payload: entriesToPost });
 			await addDocument(entriesToPost);
 		} else {
 			setError("Debit and Credit value should be equal");
@@ -237,7 +234,7 @@ function FormModal() {
 
 				<div className="entry">
 					<div>
-						<label>Add Credit Entry </label>
+						<label>Add Credit Entry HELLO</label>
 					</div>
 					<div>
 						<button className={` btn btn-primary`} onClick={() => addClickHandler("c")}>

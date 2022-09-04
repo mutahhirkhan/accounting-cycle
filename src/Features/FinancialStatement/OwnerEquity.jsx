@@ -107,7 +107,6 @@ const OwnerEquity = () => {
 
   return (
     <div className="div">
-      {console.log(ownerEquityStatement)}
       <div></div>
       <div>
         <h1> Statement Of Owner's Equity </h1>
