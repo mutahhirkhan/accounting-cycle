@@ -15,6 +15,8 @@ const Header = () => {
                   <li> <NavLink to="/income-statement" className={({ isActive }) => (isActive ? 'active' : 'inactive')}>Income Statement</NavLink></li>
                   <li> <NavLink to="/balance-sheet" className={({ isActive }) => (isActive ? 'active' : 'inactive')}>Balance Sheet</NavLink></li>
                   <li> <NavLink to="/owner-equity" className={({ isActive }) => (isActive ? 'active' : 'inactive')}>Owner Equity</NavLink></li>
+                  <li> <NavLink to="/test" className={({ isActive }) => (isActive ? 'active' : 'inactive')}>Test</NavLink></li>
+
               </ul>
         </nav>
         

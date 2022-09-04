@@ -32,8 +32,8 @@ export const useFirestore = (collection) => {
 
  
 
-  // collection ref
-  const ref = projectFirestore.collection(collection)
+  // collection collectionRef
+  const collectionRef = projectFirestore.collection(collection)
 
    
 
@@ -50,7 +50,7 @@ export const useFirestore = (collection) => {
     console.log("collection"+doc)
     try {
       const createdAt = timestamp.fromDate(new Date())
-      const addedDocument = await ref.add({ ...doc, createdAt })
+      const addedDocument = await collectionRef.add({ ...doc, createdAt })
       console.log("col"+addedDocument)
       dispatchIfNotCancelled({ type: 'ADDED_DOCUMENT', payload: addedDocument })
     }
@@ -66,7 +66,7 @@ export const useFirestore = (collection) => {
     dispatch({ type: 'IS_PENDING' })
 
     try {
-      await ref.doc(id).delete()
+      await collectionRef.doc(id).delete()
       dispatchIfNotCancelled({ type: 'DELETED_DOCUMENT' })
     }
     catch (err) {
@@ -79,7 +79,7 @@ export const useFirestore = (collection) => {
     dispatch({ type: "IS_PENDING" })
 
     try {
-      const updatedDocument = await ref.doc(id).update(updates)
+      const updatedDocument = await collectionRef.doc(id).update(updates)
       dispatchIfNotCancelled({ type: "UPDATED_DOCUMENT", payload: updatedDocument })
       return updatedDocument
     } 

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import GeneralEntriesContainer from '../Features/GeneralJournal';
-import FinancialStatementMainComponent from '../Features/FinancialStatement';
 import IncomeStatement from '../Features/FinancialStatement/IncomeStatement';
 import TrialBalances from '../Features/FinancialStatement/TrialBalances';
 import BalanceSheet from '../Features/FinancialStatement/BalanceSheet';
@@ -13,7 +12,6 @@ function RouterSwitch() {
 
     <Routes>
       <Route path="/" element={<GeneralEntriesContainer />} />
-      {/* <Route path="/financial-statement" element={<FinancialStatementMainComponent />} /> */}
       <Route path="/trial-balances" element={<TrialBalances />} />
       <Route path="/income-statement" element={<IncomeStatement />} />
       <Route path="/balance-sheet" element={<BalanceSheet />} />

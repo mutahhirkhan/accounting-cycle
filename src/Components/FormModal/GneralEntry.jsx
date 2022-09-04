@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useAuthContext } from "./../../hooks/useAuthContext";
 import { useFirestore } from "./../../hooks/useFirestore";
 import "./FormModal.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -21,12 +20,12 @@ const GneralEntry = () => {
     typeB: "",
   };
   const classes = useStyles();
-  const { dispatch } = useAuthContext();
   const { addDocument } = useFirestore("generalEntry");
   const [debitVal, setDebitVal] = useState([mockDebitEntries]);
   const [creditVal, setCreditVal] = useState([mockCreditEntries]);
   const [error, setError] = useState("");
 
+  // console.log("rest",restContext);
   const debitInfoChangeHandler = (e, i) => {
     const { name, value } = e.target;
     const list = [...debitVal];
@@ -94,7 +93,6 @@ const GneralEntry = () => {
         ...creditVal.map((creditEntry) => creditEntry),
       ];
       console.log(entriesToPost);
-      dispatch({ type: "General_Entry", payload: entriesToPost });
       await addDocument(entriesToPost);
       setDebitVal([mockDebitEntries]);
       setCreditVal([mockCreditEntries]);

@@ -1,13 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useId } from "react";
 import "./Form.css";
-import { useAuthContext } from "../../../../hooks/useAuthContext";
+// import { useAuthContext } from "../../../../hooks/useAuthContext";
 import { useFirestore } from "../../../../hooks/useFirestore";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function FormModal() {
-	const { dispatch, generalEntry } = useAuthContext();
-	const { addDocument, response } = useFirestore("generalEntry");
+	// const { dispatch, generalEntry } = useAuthContext();
+	const { addDocument } = useFirestore("generalEntry");
 	const { addDocument: doc, response: resp } = useFirestore("generalEntry");
 
 	const [debitVal, setDebitVal] = useState([

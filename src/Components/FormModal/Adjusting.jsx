@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useAuthContext } from "../../hooks/useAuthContext";
 import { useFirestore } from "../../hooks/useFirestore";
 import "./FormModal.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -21,7 +20,6 @@ const Adjusting = () => {
 		typeB: "",
 	};
 	const classes = useStyles();
-	const { dispatch, generalEntry } = useAuthContext();
 	const { addDocument, response } = useFirestore("generalEntry");
 	const { addDocument: doc, response: resp } = useFirestore("generalEntry");
 
@@ -96,7 +94,6 @@ const Adjusting = () => {
     ) {
         const entriesToPost = [...debitVal.map((debitEntry) => debitEntry), ...creditVal.map((creditEntry) => creditEntry)];
         console.log(entriesToPost);
-        dispatch({ type: "General_Entry", payload: entriesToPost });
         await addDocument(entriesToPost);
         setDebitVal([mockDebitEntries]);
         setCreditVal([mockCreditEntries]);
