@@ -4,7 +4,6 @@ import { useCollection } from "../../hooks/useCollection";
 import { allTypesData, useStyles } from "../../utils";
 import "./FinancialStatement.css";
 
-let Beginnigbalance = 28500;
 function TrialBalances() {
 	const classes=useStyles()
 	const { documents, error } = useCollection("generalEntry");

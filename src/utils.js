@@ -29,7 +29,7 @@ export const allTypesData = (documents) => {
  */
 const calculateBalancesForTrialBalance = (obj, tbBalances) => {
 
-	const { typeA, debit, typeB, credit, debitInfo, creditInfo } = obj || {}; //type and amount
+	const { typeA, debit, typeB, credit } = obj || {}; //type and amount
 
 	//is destructuring from empty field e.g. createdAt
 	if (!obj["creditInfo"]) return tbBalances;
