@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useCollection } from "../../hooks/useCollection";
 import { useStyles } from "../../utils";
 import { allTypesData } from "../../utils";
-import "./financialstatement.css";
+import "./FinancialStatement.css";
 
 let Beginnigbalance = 28500;
 function BalanceSheet() {

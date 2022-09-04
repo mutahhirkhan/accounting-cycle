@@ -6,7 +6,7 @@ import GneralEntry from "./GneralEntry";
 import "./FormModal.css";
 import { useStyles } from "../../utils";
 
-function FormModal() {
+function  FormModal() {
   const classes = useStyles();
   const [formType, setFormType] = React.useState("general-entry");
   return (

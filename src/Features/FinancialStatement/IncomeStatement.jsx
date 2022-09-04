@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useCollection } from "../../hooks/useCollection";
 import { allTypesData, useStyles } from "../../utils";
 import { Table, Paper, TableBody, TableHead, TableContainer, TableCell, TableRow } from "@mui/material";
-import "./financialstatement.css";
+import "./FinancialStatement.css";
 
 const IncomeStatement = () => {
 	const classes=useStyles()

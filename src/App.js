@@ -5,9 +5,10 @@ import GeneralEntriesContainer from "./Features/GeneralJournal/index";
 import TrialBalances from "./Features/FinancialStatement/TrialBalances";
 import IncomeStatement from "./Features/FinancialStatement/IncomeStatement";
 import BalanceSheet from "./Features/FinancialStatement/BalanceSheet";
-import GeneralEntries from "./Features/GeneralJournal/Components/GeneralEntries/index";
+import GeneralEntries from "./Features/GeneralJournal/GeneralEntries";
 import OwnerEquity from "./Features/FinancialStatement/OwnerEquity";
 import Test from "./Features/Test/Test";
+import PostEntries from './Features/PostEntries/PostEntries';
 
 function App() {
 	return (
@@ -16,7 +17,9 @@ function App() {
 				<Router>
 					<Header />
 					<Routes>
-						<Route path="/" element={<GeneralEntriesContainer />} />
+						{/* <Route path="/" element={<GeneralEntriesContainer />} /> */}
+						<Route path="/" element={<PostEntries />} />
+
 						<Route path="/trial-balances" element={<TrialBalances />} />
 						<Route path="/income-statement" element={<IncomeStatement />} />
 						<Route path="/balance-sheet" element={<BalanceSheet />} />

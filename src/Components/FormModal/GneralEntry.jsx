@@ -104,7 +104,7 @@ const GneralEntry = () => {
       {" "}
       <Card className={classes.formroot}>
         <CardContent>
-          <h2> General-Journal Entries</h2>
+          <h2> General Entries</h2>
           <div className={classes.scroll}>
             <form>
               {debitVal.map((debtValInput, index) => (

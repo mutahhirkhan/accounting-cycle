@@ -2,7 +2,7 @@ import { Paper, Table, TableBody, TableContainer, TableHead, TableRow, TableCell
 import React, { useState, useEffect } from "react";
 import { useCollection } from "../../hooks/useCollection";
 import { allTypesData, useStyles } from "../../utils";
-import "./financialstatement.css";
+import "./FinancialStatement.css";
 
 let Beginnigbalance = 28500;
 function TrialBalances() {

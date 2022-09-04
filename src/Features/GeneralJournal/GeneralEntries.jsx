@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useRef } from "react";
-import { useCollection } from "../../../../hooks/useCollection";
-import "./generalentries.css";
+import { useCollection } from "../../hooks/useCollection";
+import "./GeneralEntries.css";
 import moment from "moment";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -10,8 +10,8 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-import "../../../FinancialStatement/financialstatement.css";
-import { useStyles } from "../../../../utils";
+import "./../FinancialStatement/FinancialStatement.css";
+import { useStyles } from "../../utils";
 
 function GeneralEntries() {
   const classes = useStyles();
