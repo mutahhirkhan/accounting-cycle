@@ -14,19 +14,18 @@ function TrialBalances() {
 		credits: 0,
 	});
 
-	const { netTotal, assetsTotal, liabTotal, endingOwnerEquity, ownerWithDraw, ownerEquity, revTotal, expTotal, tbBalances } =
-		allTypesData(documents);
+	const { tbBalances } = allTypesData(documents);
 
-	let flag = 0;
-	// console.log(assetsTotal ,liabTotal , endingOwnerEquity , ownerEquity);
-	if (assetsTotal == liabTotal + endingOwnerEquity + ownerEquity) {
-		//if balance is equal
-		flag = 1;
-	}
-	const newownerequity = Beginnigbalance + netTotal - ownerWithDraw;
-	/// NOTICE
-	// const oc = newownerequity - Beginnigbalance + Beginnigbalance;
-	const oc = newownerequity;
+	// let flag = 0;
+	// // console.log(assetsTotal ,liabTotal , endingOwnerEquity , ownerEquity);
+	// if (assetsTotal == liabTotal + endingOwnerEquity + ownerEquity) {
+	// 	//if balance is equal
+	// 	flag = 1;
+	// }
+	// const newownerequity = Beginnigbalance + netTotal - ownerWithDraw;
+	// /// NOTICE
+	// // const oc = newownerequity - Beginnigbalance + Beginnigbalance;
+	// const oc = newownerequity;
 
 	useEffect(() => {
 		Object.keys(tbBalances).length > 0 && calculateDebitAndCreditForTbBalances(tbBalances);

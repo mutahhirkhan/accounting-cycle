@@ -13,7 +13,7 @@ function BalanceSheet() {
 	const [filterredAssets, setFilterredAssets] = useState([]);
 	const [filterredLiabilityAndCapital, setFilterredLiabilityAndCapital] = useState([]);
 
-	const { netTotal, assetsTotal, liabTotal, endingOwnerEquity, ownerWithDraw, ownerEquity, revTotal, expTotal, tbBalances } =
+	const {tbBalances } =
 		allTypesData(documents);
 
 	useEffect(() => {
@@ -82,8 +82,8 @@ function BalanceSheet() {
 							</TableHead>
 
 							<TableBody>
-								{filterredAssets.map((assetEntry) => (
-									<TableRow>
+								{filterredAssets.map((assetEntry, index) => (
+									<TableRow key={index+1}>
 										{/* for assets */}
 										<TableCell align={"left"}>{`${assetEntry.name}`}</TableCell>
 										<TableCell align={"right"}>
@@ -118,8 +118,8 @@ function BalanceSheet() {
 							</TableHead>
 
 							<TableBody>
-								{filterredLiabilityAndCapital.map((assetEntry) => (
-									<TableRow>
+								{filterredLiabilityAndCapital.map((assetEntry, index) => (
+									<TableRow key={index+1}>
 										{/* for assets */}
 										<TableCell align={"left"}>{`${assetEntry.name}`}</TableCell>
 										<TableCell align={"right"}>

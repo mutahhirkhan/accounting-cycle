@@ -10,7 +10,7 @@ const IncomeStatement = () => {
 	const [filterredRevenues, setFilterredRevenues] = useState([]);
 	const [filterredExpenses, setFilterredExpenses] = useState([]);
 
-	const { netTotal, assetsTotal, liabTotal, endingOwnerEquity, ownerWithDraw, ownerEquity, revTotal, expTotal, tbBalances } =
+	const { tbBalances } =
 		allTypesData(documents);
 
 	useEffect(() => {

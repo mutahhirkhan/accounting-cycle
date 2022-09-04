@@ -35,14 +35,14 @@ const OwnerEquity = () => {
   ]);
 
   const {
-    netTotal,
-    assetsTotal,
-    liabTotal,
-    endingOwnerEquity,
-    ownerWithDraw,
-    ownerEquity,
-    revTotal,
-    expTotal,
+    // netTotal,
+    // assetsTotal,
+    // liabTotal,
+    // endingOwnerEquity,
+    // ownerWithDraw,
+    // ownerEquity,
+    // revTotal,
+    // expTotal,
     tbBalances,
   } = allTypesData(documents);
 

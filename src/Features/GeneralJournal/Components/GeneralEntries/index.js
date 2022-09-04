@@ -15,6 +15,7 @@ import { useStyles } from "../../../../utils";
 
 function GeneralEntries() {
   const classes = useStyles();
+
   const getInnerCompoundEntries = (batchEntry) => {
     // console.log("entry", batchEntry);
     let filterredFromGarbage = [];
@@ -30,8 +31,8 @@ function GeneralEntries() {
       }
     });
 
-    filterredFromGarbage.forEach((entry) => {
-      generalEntriesArray.push(<TableCell>{`${entry.creditInfo}`}</TableCell>);
+    filterredFromGarbage.forEach((entry, index) => {
+      generalEntriesArray.push(<TableCell key={index+index+index+1}>{`${entry.creditInfo}`}</TableCell>);
     });
 
     return generalEntriesArray;
@@ -50,8 +51,8 @@ function GeneralEntries() {
         filterredFromGarbage.push(value);
       }
     });
-    filterredFromGarbage.forEach((entry) => {
-      generalEntriesArray.push(<TableCell>{`${entry[type] ? entry[type] : "-"}`}</TableCell>);
+    filterredFromGarbage.forEach((entry, index) => {
+      generalEntriesArray.push(<TableCell key={index+index+1}>{`${entry[type] ? entry[type] : "-"}`}</TableCell>);
     });
 
     return generalEntriesArray;
@@ -76,8 +77,8 @@ function GeneralEntries() {
             </TableHead>
             <TableBody>
               {documents &&
-                documents.map((entry) => (
-                  <TableRow key={entry.id}>
+                documents.map((entry, index) => (
+                  <TableRow key={index+1}>
                     <TableCell>{moment(entry.createdAt.toDate().toString()).format("Do MMM YY")}</TableCell>
                     {
                       <TableCell className="remove-padding">

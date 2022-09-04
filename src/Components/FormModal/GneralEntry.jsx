@@ -29,7 +29,7 @@ const GneralEntry = () => {
     const { name, value } = e.target;
     const list = [...debitVal];
     list[i][name] = value;
-    console.log("onchanhge list",list)
+    // console.log("onchanhge list",list)
     setDebitVal(list);
   };
 
@@ -38,7 +38,7 @@ const GneralEntry = () => {
     const list = [...creditVal];
     // console.log(list[i][name])
     list[i][name] = value;
-    console.log(list);
+    // console.log(list);
     setCreditVal(list);
   };
 
@@ -91,7 +91,7 @@ const GneralEntry = () => {
         ...debitVal.map((debitEntry) => debitEntry),
         ...creditVal.map((creditEntry) => creditEntry),
       ];
-      console.log(entriesToPost);
+      // console.log(entriesToPost);
       await addDocument(entriesToPost);
       setDebitVal([mockDebitEntries]);
       setCreditVal([mockCreditEntries]);

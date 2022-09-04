@@ -7,7 +7,6 @@ import { Card, CardContent, makeStyles } from "@material-ui/core";
 import { Button } from "@material-ui/core";
 import { useStyles } from "../../utils";
 
-
 const Adjusting = () => {
 	let mockDebitEntries = {
 		debitInfo: "",
@@ -33,7 +32,7 @@ const Adjusting = () => {
 		const { name, value } = e.target;
 		const list = [...debitVal];
 		list[i][name] = value;
-    console.log("onchanhge list",list)
+		// console.log("onchanhge list",list)
 		setDebitVal(list);
 	};
 
@@ -42,7 +41,7 @@ const Adjusting = () => {
 		const list = [...creditVal];
 		// console.log(list[i][name])
 		list[i][name] = value;
-		console.log(list);
+		// console.log(list);
 		setCreditVal(list);
 	};
 
@@ -83,101 +82,82 @@ const Adjusting = () => {
 		const creditValue = creditVal.reduce((acc, { credit }) => acc + +credit, 0);
 		const id = Math.floor(Math.random() * 100);
 
-    if(
-      debitVal[0].debit 
-      && (debitVal[0].debitInfo || debitVal[0].creditInfo) 
-      && debitVal[0].typeA 
-      && creditVal[0].credit 
-      && creditVal[0].creditInfo 
-      && creditVal[0].typeB 
-      && debitValue === creditValue
-    ) {
-        const entriesToPost = [...debitVal.map((debitEntry) => debitEntry), ...creditVal.map((creditEntry) => creditEntry)];
-        console.log(entriesToPost);
-        await addDocument(entriesToPost);
-        setDebitVal([mockDebitEntries]);
-        setCreditVal([mockCreditEntries]);
-    }else {
+		if (
+			debitVal[0].debit &&
+			(debitVal[0].debitInfo || debitVal[0].creditInfo) &&
+			debitVal[0].typeA &&
+			creditVal[0].credit &&
+			creditVal[0].creditInfo &&
+			creditVal[0].typeB &&
+			debitValue === creditValue
+		) {
+			const entriesToPost = [...debitVal.map((debitEntry) => debitEntry), ...creditVal.map((creditEntry) => creditEntry)];
+			// console.log(entriesToPost);
+			await addDocument(entriesToPost);
+			setDebitVal([mockDebitEntries]);
+			setCreditVal([mockCreditEntries]);
+		} else {
 			setError("Debit and Credit value should be equal");
 		}
 	};
-  return (
-    <div>
-      <Card className={classes.formroot}>
-        <CardContent>
-          <h2> Adjusting Entries </h2>
-          <div className={classes.scroll}>
-            <form>
-              {debitVal.map((debtValInput, index) => (
-
-                <FormInput
-                  key={index+1}
-                  inputFields={debtValInput}
-                  Info={"'Debit Info'"}
-                  Name={"Debit"}
-                  Type={"Type A"}
-                  onChange={debitInfoChangeHandler}
-                  index={index}
-                  removeClickHandler={removeClickHandler}
-                />
-              ))}
-              {creditVal.map((creditValValInput, index) => (
-                <FormInput
-                  key={index+1}
-                  inputFields={creditValValInput}
-                  Info={"'Credit Info'"}
-                  Name={"Credit"}
-                  Type={"Type B"}
-                  onChange={creditInfoChangeHandler}
-                  index={index}
-                  removeClickHandler={removeClickHandler}
-                />
-              ))}
-            </form>
-          </div>
-          <div className={classes.inner}>
-            <div
-              className="entry"
-              style={{ display: "flex", justifyContent: "flex-start" }}
-            >
-              <Button
-                className={classes.creditDebitBtn}
-                onClick={() => addClickHandler("d")}
-                variant="contained"
-              >
-                Add Debit Entry
-              </Button>
-            </div>
-            <div
-              className="entry"
-              style={{ display: "flex", justifyContent: "flex-start" }}
-            >
-              <Button
-                className={classes.creditDebitBtn}
-                onClick={() => addClickHandler("c")}
-                variant="contained"
-              >
-                Add Credit Entry
-              </Button>
-            </div>
-            <div style={{ display: "flex", justifyContent: "center" }}>
-              <p className="alert alert-warning" hidden={!error}>
-                {error}
-              </p>
-              <Button
-                className={classes.creditDebitBtn}
-                type="submit"
-                onClick={postGeneralEntryHandler}
-              >
-                {" "}
-                Submit{" "}
-              </Button>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-    </div>
-  );
+	return (
+		<div>
+			<Card className={classes.formroot}>
+				<CardContent>
+					<h2> Adjusting Entries </h2>
+					<div className={classes.scroll}>
+						<form>
+							{debitVal.map((debtValInput, index) => (
+								<FormInput
+									key={index + 1}
+									inputFields={debtValInput}
+									Info={"'Debit Info'"}
+									Name={"Debit"}
+									Type={"Type A"}
+									onChange={debitInfoChangeHandler}
+									index={index}
+									removeClickHandler={removeClickHandler}
+								/>
+							))}
+							{creditVal.map((creditValValInput, index) => (
+								<FormInput
+									key={index + 1}
+									inputFields={creditValValInput}
+									Info={"'Credit Info'"}
+									Name={"Credit"}
+									Type={"Type B"}
+									onChange={creditInfoChangeHandler}
+									index={index}
+									removeClickHandler={removeClickHandler}
+								/>
+							))}
+						</form>
+					</div>
+					<div className={classes.inner}>
+						<div className="entry" style={{ display: "flex", justifyContent: "flex-start" }}>
+							<Button className={classes.creditDebitBtn} onClick={() => addClickHandler("d")} variant="contained">
+								Add Debit Entry
+							</Button>
+						</div>
+						<div className="entry" style={{ display: "flex", justifyContent: "flex-start" }}>
+							<Button className={classes.creditDebitBtn} onClick={() => addClickHandler("c")} variant="contained">
+								Add Credit Entry
+							</Button>
+						</div>
+						<div style={{ display: "flex", justifyContent: "center" }}>
+							<p className="alert alert-warning" hidden={!error}>
+								{error}
+							</p>
+							<Button className={classes.creditDebitBtn} type="submit" onClick={postGeneralEntryHandler}>
+								{" "}
+								Submit{" "}
+							</Button>
+						</div>
+					</div>
+				</CardContent>
+			</Card>
+		</div>
+	);
 };
 
 export default Adjusting;

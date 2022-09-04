@@ -18,7 +18,6 @@ function FormModal() {
             <Button
               onClick={() => setFormType("general-entry")}
               variant="contained"
-              color="black"
               className={classes.creditDebitBtn}
             >
               General Entry
@@ -26,7 +25,6 @@ function FormModal() {
             <Button
               onClick={() => setFormType("adjusting-entry")}
               variant="contained"
-              color="black"
               style={{ position: "relative", justifySelf: "end" }}
               className={classes.creditDebitBtn}
             >
