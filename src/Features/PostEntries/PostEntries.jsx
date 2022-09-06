@@ -1,12 +1,12 @@
 import React from "react";
 import FormModal from "../../Components/FormModal/FormModal";
 
-const GeneralEntriesContainer = (props) => {
+const PostEntries = () => {
 	return (
 		<div>
-			{/* <FormModal /> */}
+			<FormModal />
 		</div>
 	);
 };
 
-export default GeneralEntriesContainer;
+export default PostEntries;

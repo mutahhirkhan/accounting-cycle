@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useCollection } from "../../hooks/useCollection";
-import { allTypesData } from "../../utils";
+import { allTypesData, useStyles } from "../../utils";
 import { Table, Paper, TableBody, TableHead, TableContainer, TableCell, TableRow } from "@mui/material";
-import "./financialstatement.css";
+import "./FinancialStatement.css";
 
 const IncomeStatement = () => {
+	const classes=useStyles()
 	const { documents } = useCollection("generalEntry");
 	const [filterredRevenues, setFilterredRevenues] = useState([]);
 	const [filterredExpenses, setFilterredExpenses] = useState([]);
 
-	const { netTotal, assetsTotal, liabTotal, endingOwnerEquity, ownerWithDraw, ownerEquity, revTotal, expTotal, tbBalances } =
+	const { tbBalances } =
 		allTypesData(documents);
 
 	useEffect(() => {
@@ -57,7 +58,7 @@ const IncomeStatement = () => {
 				<TableContainer className="financial-container" component={Paper}>
 					<Table className="financial-tables" sx={{ minWidth: 650 }} aria-label="simple table">
 						<TableHead>
-							<TableRow>
+							<TableRow className={classes.root}>
 								<TableCell align="left">
 									<h5> Revenues </h5>
 								</TableCell>

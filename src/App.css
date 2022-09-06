@@ -12,6 +12,12 @@
   --off-white: #888888;
   --white: #fff;
   --dark-green: #00667e;
+  --nav-height:8vh,
+}
+.flex{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* width */

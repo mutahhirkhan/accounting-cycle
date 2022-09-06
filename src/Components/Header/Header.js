@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { NavLink } from 'react-router-dom'
 import './Header.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -15,6 +15,8 @@ const Header = () => {
                   <li> <NavLink to="/income-statement" className={({ isActive }) => (isActive ? 'active' : 'inactive')}>Income Statement</NavLink></li>
                   <li> <NavLink to="/balance-sheet" className={({ isActive }) => (isActive ? 'active' : 'inactive')}>Balance Sheet</NavLink></li>
                   <li> <NavLink to="/owner-equity" className={({ isActive }) => (isActive ? 'active' : 'inactive')}>Owner Equity</NavLink></li>
+                  <li> <NavLink to="/test" className={({ isActive }) => (isActive ? 'active' : 'inactive')}>Test</NavLink></li>
+
               </ul>
         </nav>
         

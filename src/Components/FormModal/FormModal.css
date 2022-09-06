@@ -1,4 +1,4 @@
-.form-container{
+  .form-container{
     border: 1px solid black;
     padding: 2rem;
     width: 90%;
@@ -91,6 +91,78 @@
   .entry div label{
     flex:4;
   }
+
+  .authFormWrapper{
+    display: grid;
+    grid-template-columns: 20fr 60fr 20fr;
+    height: calc(100vh - var(--nav-height));
+    height: 92vh; /*hard coding this value, because somehow calc not working with vh unit*/
+  }
   
+  .authForm{
+    /* height: calc(100vh - var(--nav-height)); */
+    width: 100%;
+    /* background: lightpink; */
+    background: #ffff;
+    /* display: grid;
+    grid-template-rows: min-content 1fr min-content; */
+    padding: 2em;
+    flex-flow: column;
+
+    /* row-gap: 2em; */
+    /* transform: translateX(-10%);1 */
+  }
+.authform-switcher{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    justify-items: start;
+}
+.underLine{
+    width: 50%;
+    height: 2px;
+    background: black;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%)translateY(4px);
+}
+.authform-btns{
+    /* background: lightsalmon; */
+    display: grid;
+    justify-items: center;
+}
+.seperator-or{
+/* background: chartreuse; */
+width: 100%;
+display: grid;
+grid-template-columns: 1fr min-content 1fr;
+align-items: center;
+column-gap: 0.5em;
+font-family: var(--para-font);
+}
+.seperator-or::before{
+    content: "";
+    width: 100%;
+    height: 1px;
+    background: black;
+}
+.seperator-or::after{
+    content: "";
+    width: 100%;
+    height: 1px;
+    background: black;
+}
+.authform-fields{
+  width: inherit;
+    /* background:purple; */
+}
   
-  
+.css-6hp17o-MuiList-root-MuiMenu-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  outline: 0;
+  flex-direction: column !important;
+}

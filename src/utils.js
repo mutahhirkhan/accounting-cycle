@@ -1,12 +1,6 @@
+import { makeStyles } from '@material-ui/core/styles';
+
 export const allTypesData = (documents) => {
-	let revTotal = 0; //is
-	let expTotal = 0; //is
-	let netTotal = 0; //is
-	let ownerWithDraw = 0;
-	let assetsTotal = 0; //bs
-	let liabTotal = 0; //bs
-	let ownerEquity = 0; //bs
-	let endingOwnerEquity = 0; //bs
 	let tbBalances = {};
 
 	documents &&
@@ -15,33 +9,11 @@ export const allTypesData = (documents) => {
 				const { typeA, debit, typeB, credit, debitInfo, creditInfo } = arr[i] || {}; //type and amount
 
 				tbBalances = calculateBalancesForTrialBalance({ typeA, debit, typeB, credit, debitInfo, creditInfo }, tbBalances);
-
-				if (typeA == "Expense") expTotal += Number(debit);
-				else if (typeA == "Owner withdraw") ownerWithDraw += Number(debit);
-				else if (typeA == "Revenue") revTotal -= Number(debit);
-				else if (typeA == "Asset") assetsTotal += Number(debit);
-				else if (typeA == "Liability") liabTotal -= Number(debit);
-				else if (typeB == "Revenue") revTotal += Number(credit);
-				else if (typeB == "Owner Equity") ownerEquity += Number(credit);
-				else if (typeB == "Asset") assetsTotal -= Number(credit);
-				else if (typeB == "Liability") liabTotal += Number(credit);
 			}
 		});
-	netTotal = revTotal - expTotal;
-	endingOwnerEquity = netTotal - ownerWithDraw;
-	// console.log("TBBBB");
 	// console.log(tbBalances);
 	// console.log("TBBBB");
-	// console.log(assetsTotal,liabTotal);
 	return {
-		revTotal,
-		expTotal,
-		netTotal,
-		ownerWithDraw,
-		assetsTotal,
-		liabTotal,
-		ownerEquity,
-		endingOwnerEquity,
 		tbBalances
 	};
 };
@@ -57,7 +29,7 @@ export const allTypesData = (documents) => {
  */
 const calculateBalancesForTrialBalance = (obj, tbBalances) => {
 
-	const { typeA, debit, typeB, credit, debitInfo, creditInfo } = obj || {}; //type and amount
+	const { typeA, debit, typeB, credit } = obj || {}; //type and amount
 
 	//is destructuring from empty field e.g. createdAt
 	if (!obj["creditInfo"]) return tbBalances;
@@ -148,3 +120,37 @@ const calculateBalancesForTrialBalance = (obj, tbBalances) => {
 	//if none of them matched with pre-defined accounts, return the original tbBalances object
 	return tbBalances;
 };
+
+export const useStyles = makeStyles({
+	root: {
+	  borderRadius:'50px',
+	  "& .MuiTableCell-head": {
+		color: "white",
+		// background: "linear-gradient(#8360c3, #2ebf91)"
+		background: "#303952",
+
+	  },
+	},
+	formroot: {
+		margin: "30px",
+		background: "#fafafa",
+		boxShadow: "2px 1px 20px 0px #bdbdbd",
+		borderRadius: "12px",
+	},
+	inner: {
+		display: "grid",
+		gridTemplateColumns: "40fr 30fr 30fr",
+	},
+	scroll: {
+		overflowY: "scroll",
+		height: "180px",
+	},
+	creditDebitBtn: {
+		background: "#00667e",
+		color: "white",
+		"&:hover": {
+			background: "#303952",
+		},
+	},
+  });
+

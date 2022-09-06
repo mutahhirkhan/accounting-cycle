@@ -1,16 +1,19 @@
+import { makeStyles } from "@material-ui/core";
 import { Paper, Table, TableBody, TableContainer, TableHead, TableRow, TableCell } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import { useCollection } from "../../hooks/useCollection";
+import { useStyles } from "../../utils";
 import { allTypesData } from "../../utils";
-import "./financialstatement.css";
+import "./FinancialStatement.css";
 
 let Beginnigbalance = 28500;
 function BalanceSheet() {
+	const classes=useStyles()
 	const { documents, error } = useCollection("generalEntry");
 	const [filterredAssets, setFilterredAssets] = useState([]);
 	const [filterredLiabilityAndCapital, setFilterredLiabilityAndCapital] = useState([]);
 
-	const { netTotal, assetsTotal, liabTotal, endingOwnerEquity, ownerWithDraw, ownerEquity, revTotal, expTotal, tbBalances } =
+	const {tbBalances } =
 		allTypesData(documents);
 
 	useEffect(() => {
@@ -68,7 +71,7 @@ function BalanceSheet() {
 						{/* TABLE FOR ASSETS */}
 						<Table className="financial-tables" sx={{ minWidth: 300 }} aria-label="simple table">
 							<TableHead>
-								<TableRow>
+								<TableRow className={classes.root}>
 									<TableCell align="left">
 										<h5>Assets</h5>
 									</TableCell>
@@ -79,8 +82,8 @@ function BalanceSheet() {
 							</TableHead>
 
 							<TableBody>
-								{filterredAssets.map((assetEntry) => (
-									<TableRow>
+								{filterredAssets.map((assetEntry, index) => (
+									<TableRow key={index+1}>
 										{/* for assets */}
 										<TableCell align={"left"}>{`${assetEntry.name}`}</TableCell>
 										<TableCell align={"right"}>
@@ -104,7 +107,7 @@ function BalanceSheet() {
 						{/* TABLE FOR ASSETS */}
 						<Table className="financial-tables" sx={{ minWidth: 300 }} aria-label="simple table">
 							<TableHead>
-								<TableRow>
+								<TableRow className={classes.root}>
 									<TableCell align="left">
 										<h5>Liabilities</h5>
 									</TableCell>
@@ -115,8 +118,8 @@ function BalanceSheet() {
 							</TableHead>
 
 							<TableBody>
-								{filterredLiabilityAndCapital.map((assetEntry) => (
-									<TableRow>
+								{filterredLiabilityAndCapital.map((assetEntry, index) => (
+									<TableRow key={index+1}>
 										{/* for assets */}
 										<TableCell align={"left"}>{`${assetEntry.name}`}</TableCell>
 										<TableCell align={"right"}>
